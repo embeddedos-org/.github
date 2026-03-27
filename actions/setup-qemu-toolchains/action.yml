@@ -1,0 +1,30 @@
+name: 'Setup QEMU Cross-Compilation Toolchains'
+description: 'Install cross-compilers and QEMU emulators for multi-architecture testing'
+
+inputs:
+  architectures:
+    description: 'Space-separated list of architectures to install (arm aarch64 riscv64 mips x86_64)'
+    required: false
+    default: 'arm aarch64 riscv64 mips x86_64'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Install QEMU and cross-toolchains
+      shell: bash
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y qemu-system-arm qemu-system-misc qemu-system-x86 \
+          gcc-arm-linux-gnueabihf gcc-aarch64-linux-gnu \
+          gcc-riscv64-linux-gnu gcc-mipsel-linux-gnu \
+          gcc-arm-none-eabi cmake ninja-build cpio
+        echo "=== Installed QEMU versions ==="
+        qemu-system-arm --version | head -1
+        qemu-system-aarch64 --version | head -1
+        qemu-system-riscv64 --version | head -1
+        qemu-system-mipsel --version | head -1
+        echo "=== Cross-compilers ==="
+        arm-linux-gnueabihf-gcc --version | head -1
+        aarch64-linux-gnu-gcc --version | head -1
+        riscv64-linux-gnu-gcc --version | head -1
+        mipsel-linux-gnu-gcc --version | head -1
