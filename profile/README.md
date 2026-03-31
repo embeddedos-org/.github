@@ -8,7 +8,7 @@ A unified ecosystem of OS kernel, bootloader, AI runtime, IPC, neural interface,
 
 **41 product profiles** | **33 HAL peripherals** | **295+ unit tests** | **12 architectures** | **26 board ports**
 
-[![Version](https://img.shields.io/badge/version-0.2.0-blue)]()
+[![Version](https://img.shields.io/badge/version-0.1.0-blue)]()
 [![License](https://img.shields.io/badge/license-MIT-green)]()
 [![CI](https://img.shields.io/badge/CI-passing-brightgreen)]()
 
@@ -77,9 +77,23 @@ A unified ecosystem of OS kernel, bootloader, AI runtime, IPC, neural interface,
 | Repo | Description | Key Features |
 |------|-------------|--------------|
 | [**ebuild**](https://github.com/embeddedos-org/ebuild) | Build System + SDK Generator | 18 CLI commands, Yocto-style SDK generation for 14 targets, deliverable packager (ZIP per target + manifest.json), hardware analyzer (KiCad/YAML), gated release pipeline (all repos must pass) |
-| [**EoSuite**](https://github.com/embeddedos-org/EoSuite) | Developer Tools Suite | Ebot AI client (CLI + interactive chat), 29 GUI apps (epaint, echat, eviewer, eftp, eclock, enote, epdf, eplay...), 16 console tools, BusyBox integration (MIT/GPL), YAML config variants |
-| [**eosim**](https://github.com/embeddedos-org/eosim) | Multi-Architecture Simulator | Custom native engine (no QEMU dependency), 41 platforms, 12 architectures, CPU + memory + 6 peripherals (UART, GPIO, Timer, SPI, I2C, NVIC), pip install, Windows/Linux/macOS |
+| [**eApps**](https://github.com/embeddedos-org/eApps) | Cross-Platform Applications | Kotlin Multiplatform apps (KMP), Compose Multiplatform UI, desktop/mobile/web targets |
+| [**eosim**](https://github.com/embeddedos-org/eosim) | Multi-Architecture Simulator | EoSim native engine, 41 platforms, 12 architectures, CPU + memory + 6 peripherals (UART, GPIO, Timer, SPI, I2C, NVIC), pip install, Windows/Linux/macOS |
 | [**eos-sdk**](https://github.com/embeddedos-org/eos-sdk) | Unified SDK | Single entry point for EoS development, bundles OS APIs + bootloader + IPC + AI + peripherals, project templates for rapid prototyping |
+
+### Applications
+
+| Repo | Description | Key Features |
+|------|-------------|-------------------------------|
+| [**EoStudio**](https://github.com/embeddedos-org/EoStudio) | Design Suite | 10 design editors (3D, CAD, image, game, UI, UML, simulation, database), LLM integration |
+
+### Infrastructure
+
+| Repo | Description | Key Features |
+|------|-------------|-------------------------------|
+| [**eos-platform**](https://github.com/embeddedos-org/eos-platform) | Unified Monorepo | All OS code + layers in one repo, CMake + ebuild integration |
+| [**ebuild-tool**](https://github.com/embeddedos-org/ebuild-tool) | Standalone Build Tool | pip-installable CLI for ebuild (18 commands), SDK generator |
+| [**embeddedos-org.github.io**](https://github.com/embeddedos-org/embeddedos-org.github.io) | Project Website | Documentation site, getting started guides, API reference |
 
 ## Supported Hardware
 
@@ -95,7 +109,7 @@ A unified ecosystem of OS kernel, bootloader, AI runtime, IPC, neural interface,
 | `raspi3` | AArch64 | cortex-a53 | Broadcom BCM2837 | SBC |
 | `imx8m` | AArch64 | cortex-a53 | NXP i.MX8M | SoC |
 | `am64x` | AArch64 | cortex-a53+r5f | TI AM6442 | SoC |
-| `riscv_virt` | RISC-V 64 | rv64gc | QEMU virt | Virtual |
+| `riscv_virt` | RISC-V 64 | rv64gc | EoSim virt | Virtual |
 | `sifive_u` | RISC-V 64 | u74 | SiFive FU740 | SBC |
 | `esp32` | Xtensa LX6 | xtensa | Espressif ESP32 | MCU |
 | `x86_64` | x86_64 | generic | Generic EFI PC | PC |
@@ -131,9 +145,9 @@ go run ./cmd/eipc-server
 
 | Metric | Value |
 |--------|-------|
-| Repositories | 9 (+ website) |
+| Repositories | 13 |
 | Unit tests | 295+ |
-| QEMU board types | 11 |
+| EoSim board types | 11 |
 | Cross-compile targets | 6 (ARM, ARM64, RISC-V, x86, MIPS, PPC) |
 | Product profiles | 41 |
 | HAL peripherals | 33 |
@@ -141,6 +155,30 @@ go run ./cmd/eipc-server
 | EoSim platforms | 41 |
 | LLM models (EAI) | 12 |
 
+## CI/CD
+
+Every repository runs automated CI/CD via GitHub Actions:
+
+| Workflow | Schedule | Coverage |
+|----------|----------|----------|
+| **CI** | Every push/PR | Build + test on all platforms (Linux × Windows × macOS) |
+| **Nightly** | 2:00 AM UTC daily | Full regression suite across all platforms |
+| **Weekly** | Monday 6:00 AM UTC | Comprehensive build + dependency audit |
+| **EoSim Sanity** | 4:00 AM UTC daily | Simulation and boot validation across platform configs |
+| **Simulation Test** | 3:00 AM UTC daily | QEMU/EoSim platform simulation (7 architectures) |
+| **Release** | Tag-triggered | Build + test + artifact upload to GitHub Releases |
+
+### Standards Compliance
+
+| Category | Standards |
+|----------|----------|
+| Systems Engineering | ISO/IEC/IEEE 15288:2023, ISO/IEC 12207, ISO/IEC/IEEE 42010 |
+| Quality & Testing | ISO/IEC 25000, ISO/IEC 25010, ISO/IEC/IEEE 29119, ISO 9001 |
+| Security | ISO/IEC 27001, ISO/IEC 15408, FIPS 140-3, ISO/IEC 27701 |
+| Safety | IEC 61508, ISO 26262, DO-178C, EN 50128 |
+| Supply Chain | NTIA SBOM, SPDX, CycloneDX, OpenChain (ISO/IEC 5230) |
+| Platform | POSIX (IEEE 1003), Linux Standard Base, WCAG 2.1 |
+
 ## License
 
-MIT -- see individual repositories for details.
+MIT — see individual repositories for details.

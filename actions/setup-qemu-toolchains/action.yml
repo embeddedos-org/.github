@@ -1,30 +1,46 @@
-name: 'Setup QEMU Cross-Compilation Toolchains'
-description: 'Install cross-compilers and QEMU emulators for multi-architecture testing'
+name: Setup QEMU Toolchains
+description: Install QEMU and cross-compilation toolchains for EoS testing
 
 inputs:
   architectures:
-    description: 'Space-separated list of architectures to install (arm aarch64 riscv64 mips x86_64)'
+    description: Comma-separated list of architectures (aarch64,arm,riscv64,x86_64)
     required: false
-    default: 'arm aarch64 riscv64 mips x86_64'
+    default: "aarch64,arm,riscv64"
+  qemu-version:
+    description: QEMU version to install
+    required: false
+    default: "system"
 
 runs:
-  using: 'composite'
+  using: composite
   steps:
-    - name: Install QEMU and cross-toolchains
+    - name: Install QEMU
       shell: bash
       run: |
         sudo apt-get update
-        sudo apt-get install -y qemu-system-arm qemu-system-misc qemu-system-x86 \
-          gcc-arm-linux-gnueabihf gcc-aarch64-linux-gnu \
-          gcc-riscv64-linux-gnu gcc-mipsel-linux-gnu \
-          gcc-arm-none-eabi cmake ninja-build cpio
-        echo "=== Installed QEMU versions ==="
-        qemu-system-arm --version | head -1
+        sudo apt-get install -y qemu-system-arm qemu-system-aarch64 qemu-system-riscv64 qemu-system-x86 qemu-user-static
+
+    - name: Install cross-compilers
+      shell: bash
+      run: |
+        ARCHS="${{ inputs.architectures }}"
+        if [[ "$ARCHS" == *"aarch64"* ]]; then
+          sudo apt-get install -y gcc-aarch64-linux-gnu
+        fi
+        if [[ "$ARCHS" == *"arm"* ]]; then
+          sudo apt-get install -y gcc-arm-linux-gnueabihf gcc-arm-none-eabi
+        fi
+        if [[ "$ARCHS" == *"riscv64"* ]]; then
+          sudo apt-get install -y gcc-riscv64-linux-gnu
+        fi
+
+    - name: Verify installations
+      shell: bash
+      run: |
+        echo "=== QEMU versions ==="
         qemu-system-aarch64 --version | head -1
-        qemu-system-riscv64 --version | head -1
-        qemu-system-mipsel --version | head -1
+        qemu-system-arm --version | head -1
         echo "=== Cross-compilers ==="
-        arm-linux-gnueabihf-gcc --version | head -1
-        aarch64-linux-gnu-gcc --version | head -1
-        riscv64-linux-gnu-gcc --version | head -1
-        mipsel-linux-gnu-gcc --version | head -1
+        which aarch64-linux-gnu-gcc && aarch64-linux-gnu-gcc --version | head -1 || true
+        which arm-linux-gnueabihf-gcc && arm-linux-gnueabihf-gcc --version | head -1 || true
+        which riscv64-linux-gnu-gcc && riscv64-linux-gnu-gcc --version | head -1 || true
