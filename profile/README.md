@@ -8,7 +8,7 @@ A unified ecosystem of OS kernel, bootloader, AI runtime, IPC, neural interface,
 
 **41 product profiles** | **33 HAL peripherals** | **295+ unit tests** | **12 architectures** | **26 board ports**
 
-[![Version](https://img.shields.io/badge/version-0.2.0-blue)]()
+[![Version](https://img.shields.io/badge/version-0.1.0-blue)]()
 [![License](https://img.shields.io/badge/license-MIT-green)]()
 [![CI](https://img.shields.io/badge/CI-passing-brightgreen)]()
 
@@ -81,6 +81,22 @@ A unified ecosystem of OS kernel, bootloader, AI runtime, IPC, neural interface,
 | [**eosim**](https://github.com/embeddedos-org/eosim) | Multi-Architecture Simulator | Custom native engine (no QEMU dependency), 41 platforms, 12 architectures, CPU + memory + 6 peripherals (UART, GPIO, Timer, SPI, I2C, NVIC), pip install, Windows/Linux/macOS |
 | [**eos-sdk**](https://github.com/embeddedos-org/eos-sdk) | Unified SDK | Single entry point for EoS development, bundles OS APIs + bootloader + IPC + AI + peripherals, project templates for rapid prototyping |
 
+### Applications
+
+| Repo | Description | Key Features |
+|------|-------------|-------------------------------|
+| [**eApps**](https://github.com/embeddedos-org/eApps) | KMP Cross-Platform Apps | 38 apps (Kotlin Multiplatform + Compose), Android/iOS/Desktop/Web (WASM) |
+| [**eMobile-Apps**](https://github.com/embeddedos-org/eMobile-Apps) | Flutter Mobile Apps | 15 Flutter apps + 3 shared packages, Android/iOS/Linux/macOS/Windows |
+| [**EoSDesign**](https://github.com/embeddedos-org/EoSDesign) | Design Suite | 10 design editors (3D, CAD, image, game, UI, UML, simulation, database), LLM integration |
+
+### Infrastructure
+
+| Repo | Description | Key Features |
+|------|-------------|-------------------------------|
+| [**eos-platform**](https://github.com/embeddedos-org/eos-platform) | Unified Monorepo | All OS code + layers in one repo, CMake + ebuild integration |
+| [**ebuild-tool**](https://github.com/embeddedos-org/ebuild-tool) | Standalone Build Tool | pip-installable CLI for ebuild (18 commands), SDK generator |
+| [**embeddedos-org.github.io**](https://github.com/embeddedos-org/embeddedos-org.github.io) | Project Website | Documentation site, getting started guides, API reference |
+
 ## Supported Hardware
 
 | Target | Architecture | CPU | Vendor / SoC | Class |
@@ -131,7 +147,7 @@ go run ./cmd/eipc-server
 
 | Metric | Value |
 |--------|-------|
-| Repositories | 9 (+ website) |
+| Repositories | 16 |
 | Unit tests | 295+ |
 | QEMU board types | 11 |
 | Cross-compile targets | 6 (ARM, ARM64, RISC-V, x86, MIPS, PPC) |
@@ -141,6 +157,17 @@ go run ./cmd/eipc-server
 | EoSim platforms | 41 |
 | LLM models (EAI) | 12 |
 
+## CI/CD
+
+Every repository runs automated CI/CD via GitHub Actions:
+
+- **CI** — build + test on every push/PR to `master` (Linux × Windows × macOS)
+- **Nightly** — full test suite across all platforms (2 AM UTC)
+- **Weekly** — comprehensive build + dependency audit (Monday 6 AM UTC)
+- **QEMU Sanity** — boot validation on x86_64, aarch64, riscv64 virtual machines
+- **EoSim Sanity** — simulation validation across platform configs (4 AM UTC)
+- **Release** — tag-triggered builds with artifact upload to GitHub Releases
+
 ## License
 
-MIT -- see individual repositories for details.
+MIT — see individual repositories for details.
