@@ -86,7 +86,6 @@ A unified ecosystem of OS kernel, bootloader, AI runtime, IPC, neural interface,
 | Repo | Description | Key Features |
 |------|-------------|-------------------------------|
 | [**eApps**](https://github.com/embeddedos-org/eApps) | KMP Cross-Platform Apps | 38 apps (Kotlin Multiplatform + Compose), Android/iOS/Desktop/Web (WASM) |
-| [**eMobile-Apps**](https://github.com/embeddedos-org/eMobile-Apps) | Flutter Mobile Apps | 15 Flutter apps + 3 shared packages, Android/iOS/Linux/macOS/Windows |
 | [**EoSDesign**](https://github.com/embeddedos-org/EoSDesign) | Design Suite | 10 design editors (3D, CAD, image, game, UI, UML, simulation, database), LLM integration |
 
 ### Infrastructure
@@ -147,7 +146,7 @@ go run ./cmd/eipc-server
 
 | Metric | Value |
 |--------|-------|
-| Repositories | 16 |
+| Repositories | 15 |
 | Unit tests | 295+ |
 | QEMU board types | 11 |
 | Cross-compile targets | 6 (ARM, ARM64, RISC-V, x86, MIPS, PPC) |
