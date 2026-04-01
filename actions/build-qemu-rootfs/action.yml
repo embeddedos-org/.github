@@ -1,0 +1,58 @@
+name: Build QEMU Root Filesystem
+description: Build a minimal Linux root filesystem for QEMU-based EoS testing
+
+inputs:
+  architecture:
+    description: Target architecture (aarch64, arm, riscv64, x86_64)
+    required: true
+  output-dir:
+    description: Directory to place the rootfs image
+    required: false
+    default: "rootfs"
+  include-eosim:
+    description: Whether to include eosim in the rootfs
+    required: false
+    default: "true"
+
+outputs:
+  rootfs-path:
+    description: Path to the generated rootfs image
+    value: ${{ steps.build.outputs.rootfs_path }}
+
+runs:
+  using: composite
+  steps:
+    - name: Install debootstrap
+      shell: bash
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y debootstrap qemu-user-static
+
+    - name: Build minimal rootfs
+      id: build
+      shell: bash
+      run: |
+        mkdir -p ${{ inputs.output-dir }}
+        ROOTFS="${{ inputs.output-dir }}/rootfs-${{ inputs.architecture }}.ext4"
+
+        dd if=/dev/zero of="$ROOTFS" bs=1M count=256
+        mkfs.ext4 -F "$ROOTFS"
+
+        MOUNT_DIR=$(mktemp -d)
+        sudo mount -o loop "$ROOTFS" "$MOUNT_DIR"
+
+        case "${{ inputs.architecture }}" in
+          aarch64) DEBOOT_ARCH="arm64" ;;
+          arm)     DEBOOT_ARCH="armhf" ;;
+          riscv64) DEBOOT_ARCH="riscv64" ;;
+          x86_64)  DEBOOT_ARCH="amd64" ;;
+        esac
+
+        sudo debootstrap --arch="$DEBOOT_ARCH" --variant=minbase --foreign \
+          bookworm "$MOUNT_DIR" http://deb.debian.org/debian || true
+
+        sudo umount "$MOUNT_DIR"
+        rmdir "$MOUNT_DIR"
+
+        echo "rootfs_path=$ROOTFS" >> $GITHUB_OUTPUT
+        echo "Built rootfs: $ROOTFS ($(du -h $ROOTFS | cut -f1))"

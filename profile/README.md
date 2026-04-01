@@ -4,9 +4,9 @@
 
 **The Complete Embedded Operating System**
 
-A unified ecosystem of OS kernel, bootloader, AI runtime, IPC, neural interface, build system, simulator, and developer tools --- targeting 14 hardware platforms across 12 architectures.
+A unified ecosystem of OS kernel, bootloader, AI runtime, IPC, neural interface, build system, simulator, applications, and developer tools — targeting 14 hardware platforms across 12 architectures.
 
-**41 product profiles** | **33 HAL peripherals** | **295+ unit tests** | **12 architectures** | **26 board ports**
+**41 product profiles** | **33 HAL peripherals** | **295+ unit tests** | **12 architectures** | **24 board ports**
 
 [![Version](https://img.shields.io/badge/version-0.1.0-blue)]()
 [![License](https://img.shields.io/badge/license-MIT-green)]()
@@ -22,8 +22,8 @@ A unified ecosystem of OS kernel, bootloader, AI runtime, IPC, neural interface,
 
 ```
 +------------------------------------------------------------------+
-|                     EoSuite (Applications)                       |
-|   29 GUI Apps | 16 Console Tools | Ebot AI Client | CLI Chat    |
+|                     eApps (38 C + LVGL Apps)                     |
+|   13 Productivity | 4 Media | 11 Games | 5 Connectivity | 5 Misc|
 +------------------------------------------------------------------+
         |                    |                    |
 +----------------+  +----------------+  +------------------+
@@ -36,13 +36,13 @@ A unified ecosystem of OS kernel, bootloader, AI runtime, IPC, neural interface,
 +------------------------------------------------------------------+
 |                   EoS Core + eBoot                               |
 |  RTOS Kernel: tasks, sync, IPC, multicore scheduling             |
-|  Bootloader: 26 boards, secure boot, A/B slots, recovery        |
+|  Bootloader: 24 boards, secure boot, A/B slots, recovery        |
 |  Debug: GDB stub, core dump, ring buffer logging (6 levels)      |
 |  Drivers: loadable framework, 19 device classes, device tree     |
 +------------------------------------------------------------------+
         |                    |                    |
 +------------------------------------------------------------------+
-|                   HAL -- 33 Peripherals                           |
+|                   HAL — 33 Peripherals                            |
 |  GPIO | UART | SPI | I2C | CAN | WiFi | BLE | USB | ADC | PWM  |
 |  Timer | DMA | GPU | Camera | IMU | Display | Audio | Ethernet  |
 +------------------------------------------------------------------+
@@ -62,8 +62,8 @@ A unified ecosystem of OS kernel, bootloader, AI runtime, IPC, neural interface,
 | Repo | Description | Key Features |
 |------|-------------|--------------|
 | [**eos**](https://github.com/embeddedos-org/eos) | Multi-platform Embedded OS | HAL (33 peripherals), RTOS kernel (tasks, sync, IPC, multicore), crypto (SHA-256, AES, RSA), OTA, filesystem, sensor fusion, PID motor control, GDB remote stub, core dump handler, service manager, loadable driver framework, device tree parser, logging (6 levels, module filter, ring buffer) |
-| [**eboot**](https://github.com/embeddedos-org/eboot) | Universal Bootloader | 26 board ports across 10+ architectures, A/B firmware slots, secure boot chain, crypto verification, recovery mode, boot logging, CRC validation |
-| [**eipc**](https://github.com/embeddedos-org/eipc) | Secure IPC | Go server + C SDK, HMAC-SHA256 authentication, replay protection, frame protocol, TCP/Unix/shared memory/UART/BLE/USB transports, priority lanes P0-P3 |
+| [**eboot**](https://github.com/embeddedos-org/eboot) | Universal Bootloader | 24 board ports across 10 architectures, A/B firmware slots, secure boot chain, crypto verification, recovery mode, boot logging, CRC validation |
+| [**eipc**](https://github.com/embeddedos-org/eipc) | Secure IPC | Go server + C SDK, HMAC-SHA256 authentication, replay protection, frame protocol, TCP/Unix/shared memory transports, priority lanes P0-P3 |
 
 ### Intelligence
 
@@ -77,22 +77,19 @@ A unified ecosystem of OS kernel, bootloader, AI runtime, IPC, neural interface,
 | Repo | Description | Key Features |
 |------|-------------|--------------|
 | [**ebuild**](https://github.com/embeddedos-org/ebuild) | Build System + SDK Generator | 18 CLI commands, Yocto-style SDK generation for 14 targets, deliverable packager (ZIP per target + manifest.json), hardware analyzer (KiCad/YAML), gated release pipeline (all repos must pass) |
-| [**eApps**](https://github.com/embeddedos-org/eApps) | Cross-Platform Applications | Kotlin Multiplatform apps (KMP), Compose Multiplatform UI, desktop/mobile/web targets |
 | [**eosim**](https://github.com/embeddedos-org/eosim) | Multi-Architecture Simulator | EoSim native engine, 41 platforms, 12 architectures, CPU + memory + 6 peripherals (UART, GPIO, Timer, SPI, I2C, NVIC), pip install, Windows/Linux/macOS |
-| [**eos-sdk**](https://github.com/embeddedos-org/eos-sdk) | Unified SDK | Single entry point for EoS development, bundles OS APIs + bootloader + IPC + AI + peripherals, project templates for rapid prototyping |
 
 ### Applications
 
 | Repo | Description | Key Features |
 |------|-------------|-------------------------------|
+| [**eApps**](https://github.com/embeddedos-org/eApps) | Cross-Platform Apps (C + LVGL) | 38 apps (productivity, media, games, connectivity, security), SDL2/EoS/Web backends, runs on Windows/Linux/macOS/EoS/WASM |
 | [**EoStudio**](https://github.com/embeddedos-org/EoStudio) | Design Suite | 10 design editors (3D, CAD, image, game, UI, UML, simulation, database), LLM integration |
 
 ### Infrastructure
 
 | Repo | Description | Key Features |
 |------|-------------|-------------------------------|
-| [**eos-platform**](https://github.com/embeddedos-org/eos-platform) | Unified Monorepo | All OS code + layers in one repo, CMake + ebuild integration |
-| [**ebuild-tool**](https://github.com/embeddedos-org/ebuild-tool) | Standalone Build Tool | pip-installable CLI for ebuild (18 commands), SDK generator |
 | [**embeddedos-org.github.io**](https://github.com/embeddedos-org/embeddedos-org.github.io) | Project Website | Documentation site, getting started guides, API reference |
 
 ## Supported Hardware
@@ -139,21 +136,11 @@ eosim run stm32f4 --timeout 30
 # Start IPC server
 git clone https://github.com/embeddedos-org/eipc.git && cd eipc
 go run ./cmd/eipc-server
+
+# Build eApps (38 cross-platform apps)
+git clone https://github.com/embeddedos-org/eApps.git && cd eApps
+cmake -B build -DEAPPS_PORT=sdl2 && cmake --build build
 ```
-
-## CI/CD Stats
-
-| Metric | Value |
-|--------|-------|
-| Repositories | 13 |
-| Unit tests | 295+ |
-| EoSim board types | 11 |
-| Cross-compile targets | 6 (ARM, ARM64, RISC-V, x86, MIPS, PPC) |
-| Product profiles | 41 |
-| HAL peripherals | 33 |
-| eBoot board ports | 26 |
-| EoSim platforms | 41 |
-| LLM models (EAI) | 12 |
 
 ## CI/CD
 
@@ -165,8 +152,12 @@ Every repository runs automated CI/CD via GitHub Actions:
 | **Nightly** | 2:00 AM UTC daily | Full regression suite across all platforms |
 | **Weekly** | Monday 6:00 AM UTC | Comprehensive build + dependency audit |
 | **EoSim Sanity** | 4:00 AM UTC daily | Simulation and boot validation across platform configs |
-| **Simulation Test** | 3:00 AM UTC daily | QEMU/EoSim platform simulation (7 architectures) |
+| **Simulation Test** | 3:00 AM UTC daily | QEMU/EoSim platform simulation (7+ architectures) |
 | **Release** | Tag-triggered | Build + test + artifact upload to GitHub Releases |
+
+### Cross-Repo Dispatch
+
+Changes in core repos (eos, eboot) automatically trigger CI in dependent repos — ensuring the entire ecosystem stays validated.
 
 ### Standards Compliance
 
