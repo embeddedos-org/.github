@@ -107,7 +107,7 @@ The NTIA (National Telecommunications and Information Administration) defines mi
 | Repo | Package Manager | SPDX Generator |
 |------|----------------|----------------|
 | `eos`, `eboot`, `eai`, `eni`, `eos-platform`, `eos-sdk` | CMake | `cmake-spdx` / manual |
-| `eosim`, `ebuild`, `ebuild-tool`, `EoStudio` | pip/pyproject.toml | `spdx-tools-python` |
+| `eosim`, `ebuild`, `ebuild-tool`, `EoSDesign` | pip/pyproject.toml | `spdx-tools-python` |
 | `eipc` | Go modules | `spdx-sbom-generator` |
 | `eApps` | Gradle/Kotlin | `spdx-gradle-plugin` |
 
