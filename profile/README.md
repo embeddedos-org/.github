@@ -4,15 +4,15 @@
 
 **The Complete Embedded Operating System**
 
-A unified ecosystem of OS kernel, bootloader, AI runtime, IPC, neural interface, build system, simulator, applications, and developer tools — targeting 14 hardware platforms across 12 architectures.
+A unified ecosystem of OS kernel, bootloader, AI runtime, IPC, neural interface, build system, simulator, applications, developer tools, browser, database, office suite, and mobile services — targeting 14+ hardware platforms across 12 architectures.
 
-**41 product profiles** | **33 HAL peripherals** | **295+ unit tests** | **12 architectures** | **24 board ports**
+**41 product profiles** | **33 HAL peripherals** | **300+ unit tests** | **12 architectures** | **24 board ports** | **60+ apps**
 
 [![Version](https://img.shields.io/badge/version-0.1.0-blue)]()
 [![License](https://img.shields.io/badge/license-MIT-green)]()
 [![CI](https://img.shields.io/badge/CI-passing-brightgreen)]()
 
-[Website](https://embeddedos-org.github.io) | [Quick Start](#quick-start) | [Hardware](#supported-hardware) | [Releases](#releases)
+[Website](https://www.embeddedos.org) | [Developer Portal](https://embeddedos-org.github.io) | [App Store](https://embeddedos-org.github.io/eApps/) | [Quick Start](#quick-start) | [Releases](#releases)
 
 </div>
 
@@ -22,8 +22,9 @@ A unified ecosystem of OS kernel, bootloader, AI runtime, IPC, neural interface,
 
 ```
 +------------------------------------------------------------------+
-|                     eApps (38 C + LVGL Apps)                     |
-|   13 Productivity | 4 Media | 11 Games | 5 Connectivity | 5 Misc|
+|              eApps — Unified App Store & Marketplace              |
+|  46 Native | 32 Mobile | 34 Web | 20 Browser Ext | 22 CLI Tools |
+|  4 Desktop (eOffice, EoStudio, EoSim, eBrowser) | 16 Enterprise  |
 +------------------------------------------------------------------+
         |                    |                    |
 +----------------+  +----------------+  +------------------+
@@ -49,7 +50,7 @@ A unified ecosystem of OS kernel, bootloader, AI runtime, IPC, neural interface,
         |                    |                    |
 +----------------+  +----------------+  +------------------+
 |     EoSim      |  |     eBuild     |  | Physical Boards  |
-|  41 Platforms  |  |  SDK Generator |  |  ARM | RISC-V    |
+|  52+ Platforms |  |  SDK Generator |  |  ARM | RISC-V    |
 |  12 Arches     |  |  14 Targets    |  |  x86 | Xtensa   |
 |  Native Engine |  |  Gated Release |  |  MIPS | PPC     |
 +----------------+  +----------------+  +------------------+
@@ -57,40 +58,49 @@ A unified ecosystem of OS kernel, bootloader, AI runtime, IPC, neural interface,
 
 ## Repositories
 
-### Core
+### Core Platform
 
 | Repo | Description | Key Features |
 |------|-------------|--------------|
-| [**eos**](https://github.com/embeddedos-org/eos) | Multi-platform Embedded OS | HAL (33 peripherals), RTOS kernel (tasks, sync, IPC, multicore), crypto (SHA-256, AES, RSA), OTA, filesystem, sensor fusion, PID motor control, GDB remote stub, core dump handler, service manager, loadable driver framework, device tree parser, logging (6 levels, module filter, ring buffer) |
-| [**eboot**](https://github.com/embeddedos-org/eboot) | Universal Bootloader | 24 board ports across 10 architectures, A/B firmware slots, secure boot chain, crypto verification, recovery mode, boot logging, CRC validation |
-| [**eipc**](https://github.com/embeddedos-org/eipc) | Secure IPC | Go server + C SDK, HMAC-SHA256 authentication, replay protection, frame protocol, TCP/Unix/shared memory transports, priority lanes P0-P3 |
+| [**eos**](https://github.com/embeddedos-org/eos) | Multi-platform Embedded OS | HAL (33 peripherals), RTOS kernel (tasks, sync, IPC, multicore), crypto (SHA-256, AES, RSA), OTA, filesystem, sensor fusion, PID motor control, GDB remote stub, core dump, service manager, loadable driver framework, device tree parser, logging (6 levels) |
+| [**eboot**](https://github.com/embeddedos-org/eboot) | Universal Bootloader | 24 board ports across 10 architectures, A/B firmware slots, secure boot chain, crypto verification, recovery mode, UEFI-style device table, multicore SMP/AMP/lockstep boot |
+| [**eipc**](https://github.com/embeddedos-org/eipc) | Secure IPC | Go server + C SDK, HMAC-SHA256 authentication, replay protection, frame protocol, TCP/Unix/shared memory transports, priority lanes P0-P3, pub/sub broker, policy engine |
 
 ### Intelligence
 
 | Repo | Description | Key Features |
 |------|-------------|--------------|
-| [**eai**](https://github.com/embeddedos-org/eai) | Embedded AI Layer | llama.cpp runtime with 12 curated LLM models (TinyLlama 80MB to Llama 3.2 8B), agent loop (think-act-observe), tool framework (MQTT, sensor, HTTP), Ebot Server at 192.168.1.100:8420 |
-| [**eni**](https://github.com/embeddedos-org/eni) | Embedded Neural Interface | Neuralink adapter (1024 channels, 30kHz sampling), bandpass filter, intent classification, multi-provider BCI framework, EIPC bridge for intent routing |
+| [**eai**](https://github.com/embeddedos-org/eai) | Embedded AI Layer | Two-tier (EAI-Min 50KB + EAI-Framework), llama.cpp runtime with 12 curated LLM models (TinyLlama→Llama 3.2 8B), agent loop (think-act-observe), LoRA fine-tuning, federated learning, 8-layer security, power-aware inference |
+| [**eni**](https://github.com/embeddedos-org/eni) | Embedded Neural Interface | Neuralink adapter (1024 channels, 30kHz), EEG headset provider, DSP (FIR/IIR/FFT), lightweight neural net, intent decoder, neurofeedback, stimulator with safety interlocks, EIPC bridge |
 
-### Tools
+### Tools & Build
 
 | Repo | Description | Key Features |
 |------|-------------|--------------|
-| [**ebuild**](https://github.com/embeddedos-org/ebuild) | Build System + SDK Generator | 18 CLI commands, Yocto-style SDK generation for 14 targets, deliverable packager (ZIP per target + manifest.json), hardware analyzer (KiCad/YAML), gated release pipeline (all repos must pass) |
-| [**eosim**](https://github.com/embeddedos-org/eosim) | Multi-Architecture Simulator | EoSim native engine, 41 platforms, 12 architectures, CPU + memory + 6 peripherals (UART, GPIO, Timer, SPI, I2C, NVIC), pip install, Windows/Linux/macOS |
+| [**ebuild**](https://github.com/embeddedos-org/ebuild) | Build System + SDK Generator | 18 CLI commands, Yocto-style SDK generation for 14 targets, hardware analyzer (KiCad/YAML), deliverable packager, gated release pipeline, 6 project templates |
+| [**eosim**](https://github.com/embeddedos-org/eosim) | Multi-Architecture Simulator | EoSim native engine, 52+ platforms, 12 architectures, CPU + memory + peripherals, QEMU/Renode/HIL bridge, GUI dashboard, cluster simulation |
 
-### Applications
-
-| Repo | Description | Key Features |
-|------|-------------|-------------------------------|
-| [**eApps**](https://github.com/embeddedos-org/eApps) | Cross-Platform Apps (C + LVGL) | 38 apps (productivity, media, games, connectivity, security), SDL2/EoS/Web backends, runs on Windows/Linux/macOS/EoS/WASM |
-| [**EoStudio**](https://github.com/embeddedos-org/EoStudio) | Design Suite | 10 design editors (3D, CAD, image, game, UI, UML, simulation, database), LLM integration |
-
-### Infrastructure
+### Applications & Marketplace
 
 | Repo | Description | Key Features |
 |------|-------------|-------------------------------|
-| [**embeddedos-org.github.io**](https://github.com/embeddedos-org/embeddedos-org.github.io) | Project Website | Documentation site, getting started guides, API reference |
+| [**eApps**](https://github.com/embeddedos-org/eApps) | **Unified App Store & Marketplace** | 60+ apps across 8 categories: 46 native C/LVGL apps, 4 desktop apps (eOffice, EoStudio, EoSim, eBrowser), 32 mobile Flutter apps, 34 web PWAs, 20 browser extensions, 14 dev tools, 22 CLI tools, 16 enterprise deployments. Automated CI/CD → [**Live App Store**](https://embeddedos-org.github.io/eApps/) |
+| [**EoStudio**](https://github.com/embeddedos-org/EoStudio) | Design Suite | 12 editors (3D, CAD, image, game, UI, UML, simulation, database, hardware, IDE), 30+ code generators, LLM integration |
+
+### Infrastructure & Web
+
+| Repo | Description | Key Features |
+|------|-------------|-------------------------------|
+| [**embeddedos-org.github.io**](https://github.com/embeddedos-org/embeddedos-org.github.io) | Developer Portal | Documentation, getting started guides, hardware lab, flow diagrams, responsive design |
+| [**www.embeddedos.org**](https://github.com/embeddedos-org/www.embeddedos.org) | Foundation Website | 26 pages, product pages for all 13 projects, research articles, certification programs, membership, careers, internships |
+
+## Websites
+
+| Site | URL | Purpose |
+|------|-----|---------|
+| **Foundation** | [www.embeddedos.org](https://www.embeddedos.org) | Research foundation homepage — products, certifications, membership, careers |
+| **Developer Portal** | [embeddedos-org.github.io](https://embeddedos-org.github.io) | Technical docs, getting started, hardware lab, platform flow |
+| **App Store** | [embeddedos-org.github.io/eApps](https://embeddedos-org.github.io/eApps/) | Browse, filter, download 60+ apps for all platforms |
 
 ## Supported Hardware
 
@@ -126,21 +136,42 @@ cmake -B build -DEBLDR_BOARD=stm32f4 && cmake --build build
 # Install the build system
 git clone https://github.com/embeddedos-org/ebuild.git && cd ebuild
 pip install -e .
-ebuild analyze "STM32H7 with 2MB flash, UART SPI I2C CAN"
+ebuild build --target raspi4 --with eai,eni,eipc
 
 # Run the simulator
 pip install eosim
-eosim list              # show 41 platforms
-eosim run stm32f4 --timeout 30
+eosim list && eosim run stm32f4 --timeout 30
 
 # Start IPC server
 git clone https://github.com/embeddedos-org/eipc.git && cd eipc
 go run ./cmd/eipc-server
 
-# Build eApps (38 cross-platform apps)
-git clone https://github.com/embeddedos-org/eApps.git && cd eApps
+# Build eApps (60+ cross-platform apps)
+git clone --recursive https://github.com/embeddedos-org/eApps.git && cd eApps
 cmake -B build -DEAPPS_PORT=sdl2 && cmake --build build
+
+# Browse the App Store
+# Visit https://embeddedos-org.github.io/eApps/
 ```
+
+## eApps — Unified Marketplace
+
+The [eApps](https://github.com/embeddedos-org/eApps) repository is the single source of truth for all EoS applications:
+
+| Category | Count | Technologies | Delivery |
+|---|---|---|---|
+| **Native Apps** | 46 | C + LVGL | Binaries, WASM |
+| **Desktop Apps** | 4 | Electron, Python, C/SDL2 | `.exe` `.dmg` `.AppImage` |
+| **Mobile Apps** | 32 | Flutter (Android + iOS) | `.apk` `.aab` `.ipa` |
+| **Web Apps** | 34 | HTML5/JS/WASM PWA | GitHub Pages |
+| **Browser Extensions** | 20 | WebExtensions Manifest V3 | `.zip` `.crx` `.xpi` |
+| **Dev Tools** | 14 | VS Code, JetBrains, Vim | `.vsix` `.jar` |
+| **CLI Tools** | 22 | Node.js, Python | npm, pip |
+| **Enterprise** | 16 | Docker, Helm, MSI | Images, charts |
+
+**Headline Products:** eOffice (11-app suite), EoStudio (12-editor IDE), EoSim (52+ platform simulator), eBrowser (embedded web engine), eServiceApps (5 Flutter mobile apps)
+
+🏪 **[Browse the App Store →](https://embeddedos-org.github.io/eApps/)**
 
 ## CI/CD
 
@@ -159,7 +190,7 @@ Every repository runs automated CI/CD via GitHub Actions:
 
 Changes in core repos (eos, eboot) automatically trigger CI in dependent repos — ensuring the entire ecosystem stays validated.
 
-### Standards Compliance
+## Standards Compliance
 
 | Category | Standards |
 |----------|----------|
