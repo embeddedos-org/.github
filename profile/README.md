@@ -12,7 +12,7 @@ A unified ecosystem of OS kernel, bootloader, AI runtime, IPC, neural interface,
 [![License](https://img.shields.io/badge/license-MIT-green)]()
 [![CI](https://img.shields.io/badge/CI-passing-brightgreen)]()
 
-[Website](https://www.embeddedos.org) | [Developer Portal](https://embeddedos-org.github.io) | [App Store](https://embeddedos-org.github.io/eApps/) | [Quick Start](#quick-start) | [Releases](#releases)
+[Website](https://embeddedos-org.github.io) | [Developer Portal](https://embeddedos-org.github.io) | [App Store](https://embeddedos-org.github.io/eApps/) | [Quick Start](#quick-start) | [Releases](#releases)
 
 </div>
 
@@ -92,13 +92,12 @@ A unified ecosystem of OS kernel, bootloader, AI runtime, IPC, neural interface,
 | Repo | Description | Key Features |
 |------|-------------|-------------------------------|
 | [**embeddedos-org.github.io**](https://github.com/embeddedos-org/embeddedos-org.github.io) | Developer Portal | Documentation, getting started guides, hardware lab, flow diagrams, responsive design |
-| [**www.embeddedos.org**](https://github.com/embeddedos-org/www.embeddedos.org) | Foundation Website | 26 pages, product pages for all 13 projects, research articles, certification programs, membership, careers, internships |
 
 ## Websites
 
 | Site | URL | Purpose |
 |------|-----|---------|
-| **Foundation** | [www.embeddedos.org](https://www.embeddedos.org) | Research foundation homepage — products, certifications, membership, careers |
+| **Foundation** | [embeddedos-org.github.io](https://embeddedos-org.github.io) | Project homepage — products, documentation, getting started |
 | **Developer Portal** | [embeddedos-org.github.io](https://embeddedos-org.github.io) | Technical docs, getting started, hardware lab, platform flow |
 | **App Store** | [embeddedos-org.github.io/eApps](https://embeddedos-org.github.io/eApps/) | Browse, filter, download 60+ apps for all platforms |
 
