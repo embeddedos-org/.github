@@ -1,205 +1,188 @@
 <div align="center">
 
-# EmbeddedOS
+<img src="https://raw.githubusercontent.com/embeddedos-org/eos/master/docs/book/cover.png" width="180" alt="EoS Cover">
 
-**The Complete Embedded Operating System**
+# 🚀 EmbeddedOS
 
-A unified ecosystem of OS kernel, bootloader, AI runtime, IPC, neural interface, build system, simulator, applications, developer tools, browser, database, office suite, and mobile services — targeting 14+ hardware platforms across 12 architectures.
+### The Complete Open-Source Embedded Operating System
 
-**41 product profiles** | **33 HAL peripherals** | **300+ unit tests** | **12 architectures** | **24 board ports** | **60+ apps**
+*A unified ecosystem spanning OS kernel, bootloader, AI runtime, IPC, neural interface, build system, simulator, IDE, browser, database, office suite, trading platform, and hardware designs — across 12 architectures and 83+ board ports.*
 
-[![Version](https://img.shields.io/badge/version-0.1.0-blue)]()
-[![License](https://img.shields.io/badge/license-MIT-green)]()
-[![CI](https://img.shields.io/badge/CI-passing-brightgreen)]()
+<br>
 
-[Website](https://embeddedos-org.github.io) | [Developer Portal](https://embeddedos-org.github.io) | [App Store](https://embeddedos-org.github.io/eApps/) | [Quick Start](#quick-start) | [Releases](#releases)
+[![Version](https://img.shields.io/badge/version-1.0.0-blue?style=for-the-badge&logo=semver)](https://github.com/embeddedos-org/eos)
+[![License](https://img.shields.io/badge/license-MIT-green?style=for-the-badge&logo=opensourceinitiative)](LICENSE)
+[![CI](https://img.shields.io/badge/CI%2FCD-passing-brightgreen?style=for-the-badge&logo=githubactions)](https://github.com/embeddedos-org)
+[![Books](https://img.shields.io/badge/📚_books-16_guides-purple?style=for-the-badge)](https://embeddedos-org.github.io/books.html)
+[![Diagrams](https://img.shields.io/badge/🖼_diagrams-65+-orange?style=for-the-badge)](https://embeddedos-org.github.io/books.html)
+
+<br>
+
+**83 Board Ports** · **15 Products** · **41 Product Categories** · **500K+ Lines** · **65+ Diagrams** · **180+ Citations**
+
+<br>
+
+[🌐 Website](https://embeddedos-org.github.io) · [📚 Book Library](https://embeddedos-org.github.io/books.html) · [🏪 App Store](https://embeddedos-org.github.io/eApps/) · [📖 Docs](https://embeddedos-org.github.io/docs/) · [🛠 Get Started](https://embeddedos-org.github.io/getting-started.html)
 
 </div>
 
 ---
 
-## Architecture
+## 🏗️ Platform Architecture
 
 ```
-+------------------------------------------------------------------+
-|              eApps — Unified App Store & Marketplace              |
-|  46 Native | 32 Mobile | 34 Web | 20 Browser Ext | 22 CLI Tools |
-|  4 Desktop (eOffice, EoStudio, EoSim, eBrowser) | 16 Enterprise  |
-+------------------------------------------------------------------+
-        |                    |                    |
-+----------------+  +----------------+  +------------------+
-|   EAI + ENI    |  |      EIPC      |  |   EoS Services   |
-|  LLM Inference |  |  Go + C SDK    |  |  Crypto | OTA    |
-|  Agent Loop    |  |  HMAC Auth     |  |  Sensor | Motor  |
-|  BCI Adapter   |  |  TCP/Unix/SHM  |  |  FS | Net        |
-+----------------+  +----------------+  +------------------+
-        |                    |                    |
-+------------------------------------------------------------------+
-|                   EoS Core + eBoot                               |
-|  RTOS Kernel: tasks, sync, IPC, multicore scheduling             |
-|  Bootloader: 24 boards, secure boot, A/B slots, recovery        |
-|  Debug: GDB stub, core dump, ring buffer logging (6 levels)      |
-|  Drivers: loadable framework, 19 device classes, device tree     |
-+------------------------------------------------------------------+
-        |                    |                    |
-+------------------------------------------------------------------+
-|                   HAL — 33 Peripherals                            |
-|  GPIO | UART | SPI | I2C | CAN | WiFi | BLE | USB | ADC | PWM  |
-|  Timer | DMA | GPU | Camera | IMU | Display | Audio | Ethernet  |
-+------------------------------------------------------------------+
-        |                    |                    |
-+----------------+  +----------------+  +------------------+
-|     EoSim      |  |     eBuild     |  | Physical Boards  |
-|  52+ Platforms |  |  SDK Generator |  |  ARM | RISC-V    |
-|  12 Arches     |  |  14 Targets    |  |  x86 | Xtensa   |
-|  Native Engine |  |  Gated Release |  |  MIPS | PPC     |
-+----------------+  +----------------+  +------------------+
+┌──────────────────────────────────────────────────────────────────────┐
+│                    📱 eApps — Unified App Marketplace                │
+│    46 Native │ 32 Mobile │ 34 Web │ 20 Extensions │ 22 CLI Tools    │
+│    🖥 eOffice │ 🎨 EoStudio │ 🔬 EoSim │ 🌐 eBrowser │ 🤖 eVera    │
+├──────────────────────────────────────────────────────────────────────┤
+│  🧠 eAI + eNI        │  📡 eIPC           │  🔧 EoS Services       │
+│  TinyML · LLM · BCI  │  gRPC · Pub/Sub    │  Crypto · OTA · FS     │
+│  LoRA · Federated     │  HMAC · 5 Trans.   │  Sensor · Motor · UI   │
+├──────────────────────────────────────────────────────────────────────┤
+│                    ⚙️ EoS Kernel + 🔐 eBoot                         │
+│  RTOS: Priority Preemptive │ Scheduler │ IPC │ Memory │ Multicore   │
+│  Boot: 83 boards │ Secure boot │ A/B slots │ Ed25519 │ Anti-rollback│
+├──────────────────────────────────────────────────────────────────────┤
+│                    🔌 HAL — 33 Peripherals                           │
+│  GPIO │ UART │ SPI │ I2C │ CAN │ WiFi │ BLE │ USB │ ADC │ PWM      │
+│  Timer │ DMA │ GPU │ Camera │ IMU │ Display │ Audio │ Ethernet      │
+├──────────────────────────────────────────────────────────────────────┤
+│  🔬 EoSim           │  🛠 ebuild          │  🔩 Physical Boards     │
+│  QEMU · Renode · FMI │  CMake · Meson · Yoc│  ARM · RISC-V · x86   │
+│  52+ Virtual Platforms│  Ninja · Conan      │  Xtensa · MIPS · PPC  │
+└──────────────────────────────────────────────────────────────────────┘
 ```
 
-## Repositories
+---
 
-### Core Platform
+## 📦 Repositories
 
-| Repo | Description | Key Features |
-|------|-------------|--------------|
-| [**eos**](https://github.com/embeddedos-org/eos) | Multi-platform Embedded OS | HAL (33 peripherals), RTOS kernel (tasks, sync, IPC, multicore), crypto (SHA-256, AES, RSA), OTA, filesystem, sensor fusion, PID motor control, GDB remote stub, core dump, service manager, loadable driver framework, device tree parser, logging (6 levels) |
-| [**eboot**](https://github.com/embeddedos-org/eboot) | Universal Bootloader | 24 board ports across 10 architectures, A/B firmware slots, secure boot chain, crypto verification, recovery mode, UEFI-style device table, multicore SMP/AMP/lockstep boot |
-| [**eipc**](https://github.com/embeddedos-org/eipc) | Secure IPC | Go server + C SDK, HMAC-SHA256 authentication, replay protection, frame protocol, TCP/Unix/shared memory transports, priority lanes P0-P3, pub/sub broker, policy engine |
+### 🔵 Core Platform
 
-### Intelligence
+| | Repo | Description | Stats |
+|---|------|-------------|-------|
+| ⚙️ | [**eos**](https://github.com/embeddedos-org/eos) | Real-Time Operating System | ![](https://img.shields.io/badge/HAL-33_peripherals-blue) ![](https://img.shields.io/badge/boards-83-green) |
+| 🔐 | [**eBoot**](https://github.com/embeddedos-org/eBoot) | Secure Bootloader Platform | ![](https://img.shields.io/badge/crypto-Ed25519-purple) ![](https://img.shields.io/badge/A%2FB-slots-orange) |
+| 📡 | [**eIPC**](https://github.com/embeddedos-org/eIPC) | Inter-Process Communication | ![](https://img.shields.io/badge/transports-5-blue) ![](https://img.shields.io/badge/auth-HMAC-red) |
+| 🛠 | [**ebuild**](https://github.com/embeddedos-org/ebuild) | Build System & Toolchain | ![](https://img.shields.io/badge/backends-CMake%20%7C%20Meson-orange) |
 
-| Repo | Description | Key Features |
-|------|-------------|--------------|
-| [**eai**](https://github.com/embeddedos-org/eai) | Embedded AI Layer | Two-tier (EAI-Min 50KB + EAI-Framework), llama.cpp runtime with 12 curated LLM models (TinyLlama→Llama 3.2 8B), agent loop (think-act-observe), LoRA fine-tuning, federated learning, 8-layer security, power-aware inference |
-| [**eni**](https://github.com/embeddedos-org/eni) | Embedded Neural Interface | Neuralink adapter (1024 channels, 30kHz), EEG headset provider, DSP (FIR/IIR/FFT), lightweight neural net, intent decoder, neurofeedback, stimulator with safety interlocks, EIPC bridge |
+### 🟣 AI & Neural
 
-### Tools & Build
+| | Repo | Description | Stats |
+|---|------|-------------|-------|
+| 🧠 | [**eAI**](https://github.com/embeddedos-org/eAI) | Embedded AI & TinyML | ![](https://img.shields.io/badge/runtime-TFLite%20%7C%20ONNX-purple) ![](https://img.shields.io/badge/LoRA-fine--tune-pink) |
+| 🧬 | [**eNI**](https://github.com/embeddedos-org/eNI) | Neural Interface Platform | ![](https://img.shields.io/badge/BCI-1024ch-pink) ![](https://img.shields.io/badge/EEG-30kHz-purple) |
+| 🤖 | [**eVera**](https://github.com/embeddedos-org/eVera) | AI Assistant & 3D Avatar | ![](https://img.shields.io/badge/agent-ReAct-pink) ![](https://img.shields.io/badge/3D-Three.js-cyan) |
 
-| Repo | Description | Key Features |
-|------|-------------|--------------|
-| [**ebuild**](https://github.com/embeddedos-org/ebuild) | Build System + SDK Generator | 18 CLI commands, Yocto-style SDK generation for 14 targets, hardware analyzer (KiCad/YAML), deliverable packager, gated release pipeline, 6 project templates |
-| [**eosim**](https://github.com/embeddedos-org/eosim) | Multi-Architecture Simulator | EoSim native engine, 52+ platforms, 12 architectures, CPU + memory + peripherals, QEMU/Renode/HIL bridge, GUI dashboard, cluster simulation |
+### 🟢 Apps & Services
 
-### Applications & Marketplace
+| | Repo | Description | Stats |
+|---|------|-------------|-------|
+| 📱 | [**eApps**](https://github.com/embeddedos-org/eApps) | App Framework & Marketplace | ![](https://img.shields.io/badge/apps-60+-yellow) ![](https://img.shields.io/badge/LVGL-widgets-green) |
+| 🗄 | [**eDB**](https://github.com/embeddedos-org/eDB) | Multi-Model Database | ![](https://img.shields.io/badge/models-SQL%20%7C%20Doc%20%7C%20Graph%20%7C%20KV-green) |
+| 🌐 | [**eBrowser**](https://github.com/embeddedos-org/eBrowser) | Embedded Web Browser | ![](https://img.shields.io/badge/HTML5-CSS3-cyan) ![](https://img.shields.io/badge/TLS-1.3-blue) |
+| 📄 | [**eOffice**](https://github.com/embeddedos-org/eOffice) | AI Office Suite | ![](https://img.shields.io/badge/collab-CRDT-orange) ![](https://img.shields.io/badge/formats-OOXML%20%7C%20ODF-blue) |
+| 📈 | [**eStocks**](https://github.com/embeddedos-org/eStocks_Trading_Scripts) | Algorithmic Trading | ![](https://img.shields.io/badge/backtest-walk--forward-blue) ![](https://img.shields.io/badge/risk-VaR-red) |
 
-| Repo | Description | Key Features |
-|------|-------------|-------------------------------|
-| [**eApps**](https://github.com/embeddedos-org/eApps) | **Unified App Store & Marketplace** | 60+ apps across 8 categories: 46 native C/LVGL apps, 4 desktop apps (eOffice, EoStudio, EoSim, eBrowser), 32 mobile Flutter apps, 34 web PWAs, 20 browser extensions, 14 dev tools, 22 CLI tools, 16 enterprise deployments. Automated CI/CD → [**Live App Store**](https://embeddedos-org.github.io/eApps/) |
-| [**EoStudio**](https://github.com/embeddedos-org/EoStudio) | Design Suite | 12 editors (3D, CAD, image, game, UI, UML, simulation, database, hardware, IDE), 30+ code generators, LLM integration |
+### 🟠 Tools & Hardware
 
-### Infrastructure & Web
+| | Repo | Description | Stats |
+|---|------|-------------|-------|
+| 🔬 | [**EoSim**](https://github.com/embeddedos-org/EoSim) | Hardware Simulator | ![](https://img.shields.io/badge/QEMU-Renode-red) ![](https://img.shields.io/badge/platforms-52+-orange) |
+| 🎨 | [**EoStudio**](https://github.com/embeddedos-org/EoStudio) | IDE & Design Suite | ![](https://img.shields.io/badge/editors-12-purple) ![](https://img.shields.io/badge/LSP-Tree--sitter-blue) |
+| 🔩 | [**eHardware**](https://github.com/embeddedos-org/eHardware-Designs-Products) | Hardware Designs | ![](https://img.shields.io/badge/KiCad-PCB-green) ![](https://img.shields.io/badge/products-3-orange) |
 
-| Repo | Description | Key Features |
-|------|-------------|-------------------------------|
-| [**embeddedos-org.github.io**](https://github.com/embeddedos-org/embeddedos-org.github.io) | Developer Portal | Documentation, getting started guides, hardware lab, flow diagrams, responsive design |
+---
 
-## Websites
+## 📚 Book Library — EmbeddedOS Press
 
-| Site | URL | Purpose |
-|------|-----|---------|
-| **Foundation** | [embeddedos-org.github.io](https://embeddedos-org.github.io) | Project homepage — products, documentation, getting started |
-| **Developer Portal** | [embeddedos-org.github.io](https://embeddedos-org.github.io) | Technical docs, getting started, hardware lab, platform flow |
-| **App Store** | [embeddedos-org.github.io/eApps](https://embeddedos-org.github.io/eApps/) | Browse, filter, download 60+ apps for all platforms |
+<div align="center">
 
-## Supported Hardware
+**16 professional reference books** with colorful covers, architecture diagrams, 3D visuals, and academic citations. Free PDF downloads.
 
-| Target | Architecture | CPU | Vendor / SoC | Class |
-|--------|-------------|-----|-------------|-------|
-| `stm32f4` | ARM Cortex-M4 | cortex-m4 | ST STM32F407 | MCU |
-| `stm32h7` | ARM Cortex-M7 | cortex-m7 | ST STM32H743 | MCU |
-| `stm32l4` | ARM Cortex-M4 | cortex-m4 | ST STM32L4 | MCU |
-| `nrf52` | ARM Cortex-M4F | cortex-m4 | Nordic nRF52840 | MCU |
-| `samd51` | ARM Cortex-M4F | cortex-m4 | Microchip ATSAMD51 | MCU |
-| `rp2040` | ARM Cortex-M0+ | cortex-m0+ | RPi RP2040 | MCU |
-| `raspi4` | AArch64 | cortex-a72 | Broadcom BCM2711 | SBC |
-| `raspi3` | AArch64 | cortex-a53 | Broadcom BCM2837 | SBC |
-| `imx8m` | AArch64 | cortex-a53 | NXP i.MX8M | SoC |
-| `am64x` | AArch64 | cortex-a53+r5f | TI AM6442 | SoC |
-| `riscv_virt` | RISC-V 64 | rv64gc | EoSim virt | Virtual |
-| `sifive_u` | RISC-V 64 | u74 | SiFive FU740 | SBC |
-| `esp32` | Xtensa LX6 | xtensa | Espressif ESP32 | MCU |
-| `x86_64` | x86_64 | generic | Generic EFI PC | PC |
+| | | | |
+|:---:|:---:|:---:|:---:|
+| <a href="https://github.com/embeddedos-org/eos/releases"><img src="https://raw.githubusercontent.com/embeddedos-org/eos/master/docs/book/cover.png" width="120"><br><b>EoS</b></a> | <a href="https://github.com/embeddedos-org/eBoot/releases"><img src="https://raw.githubusercontent.com/embeddedos-org/eBoot/master/docs/book/cover.png" width="120"><br><b>eBoot</b></a> | <a href="https://github.com/embeddedos-org/ebuild/releases"><img src="https://raw.githubusercontent.com/embeddedos-org/ebuild/master/docs/book/cover.png" width="120"><br><b>ebuild</b></a> | <a href="https://github.com/embeddedos-org/eIPC/releases"><img src="https://raw.githubusercontent.com/embeddedos-org/eIPC/master/docs/book/cover.png" width="120"><br><b>eIPC</b></a> |
+| <a href="https://github.com/embeddedos-org/eAI/releases"><img src="https://raw.githubusercontent.com/embeddedos-org/eAI/master/docs/book/cover.png" width="120"><br><b>eAI</b></a> | <a href="https://github.com/embeddedos-org/eNI/releases"><img src="https://raw.githubusercontent.com/embeddedos-org/eNI/master/docs/book/cover.png" width="120"><br><b>eNI</b></a> | <a href="https://github.com/embeddedos-org/EoSim/releases"><img src="https://raw.githubusercontent.com/embeddedos-org/EoSim/master/docs/book/cover.png" width="120"><br><b>EoSim</b></a> | <a href="https://github.com/embeddedos-org/EoStudio/releases"><img src="https://raw.githubusercontent.com/embeddedos-org/EoStudio/master/docs/book/cover.png" width="120"><br><b>EoStudio</b></a> |
+| <a href="https://github.com/embeddedos-org/eApps/releases"><img src="https://raw.githubusercontent.com/embeddedos-org/eApps/master/docs/book/cover.png" width="120"><br><b>eApps</b></a> | <a href="https://github.com/embeddedos-org/eDB/releases"><img src="https://raw.githubusercontent.com/embeddedos-org/eDB/master/docs/book/cover.png" width="120"><br><b>eDB</b></a> | <a href="https://github.com/embeddedos-org/eBrowser/releases"><img src="https://raw.githubusercontent.com/embeddedos-org/eBrowser/master/docs/book/cover.png" width="120"><br><b>eBrowser</b></a> | <a href="https://github.com/embeddedos-org/eOffice/releases"><img src="https://raw.githubusercontent.com/embeddedos-org/eOffice/master/docs/book/cover.png" width="120"><br><b>eOffice</b></a> |
+| <a href="https://github.com/embeddedos-org/eVera/releases"><img src="https://raw.githubusercontent.com/embeddedos-org/eVera/master/docs/book/cover.png" width="120"><br><b>eVera</b></a> | <a href="https://github.com/embeddedos-org/eStocks_Trading_Scripts/releases"><img src="https://raw.githubusercontent.com/embeddedos-org/eStocks_Trading_Scripts/master/docs/book/cover.png" width="120"><br><b>eStocks</b></a> | <a href="https://github.com/embeddedos-org/eHardware-Designs-Products/releases"><img src="https://raw.githubusercontent.com/embeddedos-org/eHardware-Designs-Products/master/docs/book/cover.png" width="120"><br><b>eHardware</b></a> | <a href="https://embeddedos-org.github.io/books.html"><img src="https://raw.githubusercontent.com/embeddedos-org/embeddedos-org.github.io/master/docs/book/cover.png" width="120"><br><b>Ecosystem</b></a> |
 
-## Quick Start
+[**📚 Browse All Books →**](https://embeddedos-org.github.io/books.html)
+
+</div>
+
+---
+
+## 🖥 Supported Hardware
+
+| | Target | Architecture | Vendor / SoC | Class |
+|---|--------|-------------|-------------|-------|
+| 💠 | `stm32f4` | ARM Cortex-M4 | ST STM32F407 | MCU |
+| 💠 | `stm32h7` | ARM Cortex-M7 | ST STM32H743 | MCU |
+| 💠 | `nrf52` | ARM Cortex-M4F | Nordic nRF52840 | MCU |
+| 💠 | `rp2040` | ARM Cortex-M0+ | RPi RP2040 | MCU |
+| 🟢 | `raspi4` | AArch64 | Broadcom BCM2711 | SBC |
+| 🟢 | `imx8m` | AArch64 | NXP i.MX8M | SoC |
+| 🔴 | `riscv_virt` | RISC-V 64 | EoSim virt | Virtual |
+| 🔴 | `sifive_u` | RISC-V 64 | SiFive FU740 | SBC |
+| 🟠 | `esp32` | Xtensa LX6 | Espressif ESP32 | MCU |
+| 🔵 | `x86_64` | x86_64 | Generic EFI PC | PC |
+
+> **83 total board ports** across ARM Cortex-M, Cortex-A, RISC-V, x86_64, Xtensa, MIPS, and PowerPC
+
+---
+
+## ⚡ Quick Start
 
 ```bash
-# Build the embedded OS
+# 🔧 Build the OS
 git clone https://github.com/embeddedos-org/eos.git && cd eos
 cmake -B build -DEOS_PRODUCT=robot -DEOS_BUILD_TESTS=ON
 cmake --build build && ctest --test-dir build
 
-# Build the bootloader for STM32F4
-git clone https://github.com/embeddedos-org/eboot.git && cd eboot
+# 🔐 Build the bootloader
+git clone https://github.com/embeddedos-org/eBoot.git && cd eBoot
 cmake -B build -DEBLDR_BOARD=stm32f4 && cmake --build build
 
-# Install the build system
-git clone https://github.com/embeddedos-org/ebuild.git && cd ebuild
-pip install -e .
-ebuild build --target raspi4 --with eai,eni,eipc
+# 🔬 Run the simulator
+pip install eosim && eosim run stm32f4 --timeout 30
 
-# Run the simulator
-pip install eosim
-eosim list && eosim run stm32f4 --timeout 30
-
-# Start IPC server
-git clone https://github.com/embeddedos-org/eipc.git && cd eipc
-go run ./cmd/eipc-server
-
-# Build eApps (60+ cross-platform apps)
-git clone --recursive https://github.com/embeddedos-org/eApps.git && cd eApps
-cmake -B build -DEAPPS_PORT=sdl2 && cmake --build build
-
-# Browse the App Store
-# Visit https://embeddedos-org.github.io/eApps/
+# 🏪 Browse the App Store
+open https://embeddedos-org.github.io/eApps/
 ```
 
-## eApps — Unified Marketplace
+---
 
-The [eApps](https://github.com/embeddedos-org/eApps) repository is the single source of truth for all EoS applications:
+## 🔄 CI/CD Pipeline
 
-| Category | Count | Technologies | Delivery |
-|---|---|---|---|
-| **Native Apps** | 46 | C + LVGL | Binaries, WASM |
-| **Desktop Apps** | 4 | Electron, Python, C/SDL2 | `.exe` `.dmg` `.AppImage` |
-| **Mobile Apps** | 32 | Flutter (Android + iOS) | `.apk` `.aab` `.ipa` |
-| **Web Apps** | 34 | HTML5/JS/WASM PWA | GitHub Pages |
-| **Browser Extensions** | 20 | WebExtensions Manifest V3 | `.zip` `.crx` `.xpi` |
-| **Dev Tools** | 14 | VS Code, JetBrains, Vim | `.vsix` `.jar` |
-| **CLI Tools** | 22 | Node.js, Python | npm, pip |
-| **Enterprise** | 16 | Docker, Helm, MSI | Images, charts |
+| Workflow | Schedule | Purpose |
+|----------|----------|---------|
+| 🔵 **CI** | Every push/PR | Build + test on Linux × Windows × macOS |
+| 🌙 **Nightly** | 2:00 AM UTC | Full regression across all platforms |
+| 📅 **Weekly** | Monday 6 AM | Dependency audit + comprehensive build |
+| 🔬 **Simulation** | 3:00 AM UTC | QEMU/EoSim validation (7+ architectures) |
+| 📦 **Release** | Tag-triggered | Build + test + PDF book + GitHub Release |
+| 📚 **Book Build** | docs/book/** push | pandoc 3.6 + Eisvogel → PDF auto-release |
 
-**Headline Products:** eOffice (11-app suite), EoStudio (12-editor IDE), EoSim (52+ platform simulator), eBrowser (embedded web engine), eServiceApps (5 Flutter mobile apps)
+---
 
-🏪 **[Browse the App Store →](https://embeddedos-org.github.io/eApps/)**
-
-## CI/CD
-
-Every repository runs automated CI/CD via GitHub Actions:
-
-| Workflow | Schedule | Coverage |
-|----------|----------|----------|
-| **CI** | Every push/PR | Build + test on all platforms (Linux × Windows × macOS) |
-| **Nightly** | 2:00 AM UTC daily | Full regression suite across all platforms |
-| **Weekly** | Monday 6:00 AM UTC | Comprehensive build + dependency audit |
-| **EoSim Sanity** | 4:00 AM UTC daily | Simulation and boot validation across platform configs |
-| **Simulation Test** | 3:00 AM UTC daily | QEMU/EoSim platform simulation (7+ architectures) |
-| **Release** | Tag-triggered | Build + test + artifact upload to GitHub Releases |
-
-### Cross-Repo Dispatch
-
-Changes in core repos (eos, eboot) automatically trigger CI in dependent repos — ensuring the entire ecosystem stays validated.
-
-## Standards Compliance
+## 📜 Standards & Compliance
 
 | Category | Standards |
 |----------|----------|
-| Systems Engineering | ISO/IEC/IEEE 15288:2023, ISO/IEC 12207, ISO/IEC/IEEE 42010 |
-| Quality & Testing | ISO/IEC 25000, ISO/IEC 25010, ISO/IEC/IEEE 29119, ISO 9001 |
-| Security | ISO/IEC 27001, ISO/IEC 15408, FIPS 140-3, ISO/IEC 27701 |
-| Safety | IEC 61508, ISO 26262, DO-178C, EN 50128 |
-| Supply Chain | NTIA SBOM, SPDX, CycloneDX, OpenChain (ISO/IEC 5230) |
-| Platform | POSIX (IEEE 1003), Linux Standard Base, WCAG 2.1 |
+| 🏗 Systems | ISO/IEC/IEEE 15288, ISO 12207, IEEE 42010 |
+| ✅ Quality | ISO 25000/25010, IEEE 29119, ISO 9001 |
+| 🔒 Security | ISO 27001, FIPS 140-3, ISO 15408 |
+| ⚠️ Safety | IEC 61508, ISO 26262, DO-178C |
+| 📋 Supply Chain | SBOM (SPDX, CycloneDX), OpenChain |
 
-## License
+---
 
-MIT — see individual repositories for details.
+<div align="center">
+
+**MIT License** · Made with ❤️ by [Srikanth Patchava](https://github.com/embeddedos-org) & Contributors
+
+[🌐 Website](https://embeddedos-org.github.io) · [📚 Books](https://embeddedos-org.github.io/books.html) · [🏪 Apps](https://embeddedos-org.github.io/eApps/) · [⭐ Star us on GitHub](https://github.com/embeddedos-org/eos)
+
+</div>
