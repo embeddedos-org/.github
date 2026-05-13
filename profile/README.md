@@ -70,9 +70,9 @@ independently released; bundled deployments are managed via [eFab](https://githu
 ### 🧰 Meta-repos *(not part of canon)*
 | | Repo | Role |
 |---|---|---|
-| 🚀 | [**embeddedos-org**](https://github.com/embeddedos-org/embeddedos-org) | **Full landing index — open this for the long-form catalogue, link tree, and quick-start.** |
 | 🌐 | [**embeddedos-org.github.io**](https://github.com/embeddedos-org/embeddedos-org.github.io) | Source for [embeddedos-org.github.io](https://embeddedos-org.github.io) — docs, books, stacks, downloads. |
 | 🏭 | [**eFab**](https://github.com/embeddedos-org/eFab) | Stack fabricator — manifest-only meta-repo. v0.1.0 ships `eai-edge` (ENI + EIPC + eAI). |
+| ⚙️ | [**.github**](https://github.com/embeddedos-org/.github) | Org-wide configuration: this profile, the default `CONTRIBUTING.md`, `SECURITY.md`, `CODE_OF_CONDUCT.md`, issue/PR templates, canon validator. |
 
 ---
 
@@ -100,10 +100,11 @@ Full guide: [embeddedos-org.github.io/getting-started.html](https://embeddedos-o
 ## 🧑‍💻 Contribute
 
 Code contributions belong in the relevant downstream product repo (each ships
-its own `CONTRIBUTING.md`). For org-wide navigation, the README index, or
-licensing questions: open an issue against [embeddedos-org/embeddedos-org](https://github.com/embeddedos-org/embeddedos-org).
-For curated-stack profiles, manifests, and integration smoke tests: open
-against [embeddedos-org/eFab](https://github.com/embeddedos-org/eFab).
+its own `CONTRIBUTING.md`). Org-wide policy — the default `CONTRIBUTING.md`,
+`SECURITY.md`, `CODE_OF_CONDUCT.md`, and the issue/PR templates — lives in
+[`embeddedos-org/.github`](https://github.com/embeddedos-org/.github). For
+curated-stack profiles, manifests, and integration smoke tests: open against
+[`embeddedos-org/eFab`](https://github.com/embeddedos-org/eFab).
 
 Standards we follow: **MIT** · **Conventional Commits** · **Contributor Covenant 2.1** · **WCAG 2.1** · **SBOM (SPDX, CycloneDX)** · ISO/IEC 27001 · IEC 61508 · ISO 26262 · DO-178C · FIPS 140-3.
 
@@ -111,7 +112,7 @@ Standards we follow: **MIT** · **Conventional Commits** · **Contributor Covena
 
 <div align="center">
 
-[🌐 Website](https://embeddedos-org.github.io) · [📚 Books](https://embeddedos-org.github.io/books.html) · [🏭 Stacks](https://embeddedos-org.github.io/stacks/) · [🏪 Apps](https://embeddedos-org.github.io/eApps/) · [🧭 Full landing index](https://github.com/embeddedos-org/embeddedos-org)
+[🌐 Website](https://embeddedos-org.github.io) · [📚 Books](https://embeddedos-org.github.io/books.html) · [🏭 Stacks](https://embeddedos-org.github.io/stacks/) · [🏪 Apps](https://embeddedos-org.github.io/eApps/) · [⭐ Star EoS](https://github.com/embeddedos-org/eos)
 
 **MIT License** · Made with ❤️ by [Srikanth Patchava](https://github.com/embeddedos-org) &amp; Contributors
 
