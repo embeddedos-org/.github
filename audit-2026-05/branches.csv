@@ -1,0 +1,87 @@
+repo,default_branch,branch,ahead,behind,status,disposition,reason
+EoSim,master,chore/production-ready-cicd,0,5,behind,delete-stale,every commit already on default (behind 5)
+EoSim,master,feat/core-module,0,34,behind,delete-stale,every commit already on default (behind 34)
+EoSim,master,feat/implement-stubs-cicd,0,32,behind,delete-stale,every commit already on default (behind 32)
+EoSim,master,security-hardening,1,33,diverged,inspect,security work (1 ahead) — must not be silently dropped
+EoStudio,master,chore/production-ready-cicd,0,5,behind,delete-stale,every commit already on default (behind 5)
+EoStudio,master,feat/core-module,0,39,behind,delete-stale,every commit already on default (behind 39)
+EoStudio,master,feat/implement-stubs-cicd,0,37,behind,delete-stale,every commit already on default (behind 37)
+EoStudio,master,fix/eostudio-quality-gaps,0,16,behind,delete-stale,every commit already on default (behind 16)
+EoStudio,master,security-hardening,1,38,diverged,inspect,security work (1 ahead) — must not be silently dropped
+eAI,master,achievement/update-gitignore,0,29,behind,delete-stale,every commit already on default (behind 29)
+eAI,master,chore/production-ready-cicd,0,3,behind,delete-stale,every commit already on default (behind 3)
+eAI,master,ci/add-codeowners,1,35,diverged,inspect,CODEOWNERS bump (1 ahead) — verify if applied to default already
+eAI,master,cleanup/url-fixes,0,31,behind,delete-stale,every commit already on default (behind 31)
+eAI,master,dependabot/github_actions/actions/setup-python-6,1,38,diverged,close-pr-then-delete,dependabot branch superseded by current default
+eApps,master,chore/production-ready-cicd,0,3,behind,delete-stale,every commit already on default (behind 3)
+eApps,master,ci/add-auto-assign,1,30,diverged,inspect,"unknown branch shape (1 ahead, 30 behind)"
+eApps,master,ci/disable-dependabot,1,30,diverged,inspect,"unknown branch shape (1 ahead, 30 behind)"
+eApps,master,dependabot/github_actions/actions/checkout-6,1,30,diverged,close-pr-then-delete,dependabot branch superseded by current default
+eApps,master,dependabot/github_actions/actions/configure-pages-6,1,30,diverged,close-pr-then-delete,dependabot branch superseded by current default
+eApps,master,fix/lvgl-symbol-defines,0,29,behind,delete-stale,every commit already on default (behind 29)
+eApps,master,fix/remove-duplicate-eostudio-hardware-module,1,28,diverged,inspect,"feature/fix branch (1 ahead, 28 behind) — review commits"
+eApps,master,refactor/extract-standalone-products,1,30,diverged,inspect,"feature/fix branch (1 ahead, 30 behind) — review commits"
+eBoot,master,achievement/update-gitignore,1,24,diverged,inspect,GitHub achievement branch (1 ahead) — likely no real value
+eBoot,master,chore/production-ready-cicd,0,2,behind,delete-stale,every commit already on default (behind 2)
+eBoot,master,ci/add-codeowners,1,27,diverged,inspect,CODEOWNERS bump (1 ahead) — verify if applied to default already
+eBoot,master,dependabot/github_actions/github/codeql-action-4,1,29,diverged,close-pr-then-delete,dependabot branch superseded by current default
+eBoot,master,feat/implement-stubs-cicd,0,23,behind,delete-stale,every commit already on default (behind 23)
+eBoot,master,security-hardening,1,24,diverged,inspect,security work (1 ahead) — must not be silently dropped
+eBrowser,master,chore/production-ready-cicd,0,3,behind,delete-stale,every commit already on default (behind 3)
+eCAD-Hardware-Products,master,chore/production-ready-cicd,0,4,behind,delete-stale,every commit already on default (behind 4)
+eCAD-Hardware-Products,master,feat/eRadar360,0,42,behind,delete-stale,every commit already on default (behind 42)
+eCAD-Hardware-Products,master,feat/eradar360-cad-complete,0,40,behind,delete-stale,every commit already on default (behind 40)
+eDB,master,chore/production-ready-cicd,0,3,behind,delete-stale,every commit already on default (behind 3)
+eDB,master,dependabot/github_actions/actions/checkout-6,1,3,diverged,close-pr-then-delete,dependabot branch superseded by current default
+eDB,master,dependabot/github_actions/actions/setup-python-6,1,3,diverged,close-pr-then-delete,dependabot branch superseded by current default
+eDB,master,dependabot/github_actions/docker/login-action-4,1,3,diverged,close-pr-then-delete,dependabot branch superseded by current default
+eDB,master,dependabot/github_actions/github/codeql-action-4,1,26,diverged,close-pr-then-delete,dependabot branch superseded by current default
+eDB,master,dependabot/github_actions/toshimaru/auto-author-assign-3.0.1,1,26,diverged,close-pr-then-delete,dependabot branch superseded by current default
+eDB,master,dependabot/pip/cryptography-gte-46.0.7,1,26,diverged,close-pr-then-delete,dependabot branch superseded by current default
+eDB,master,dependabot/pip/fastapi-gte-0.136.0,1,26,diverged,close-pr-then-delete,dependabot branch superseded by current default
+eDB,master,dependabot/pip/httpx-gte-0.28.1,1,26,diverged,close-pr-then-delete,dependabot branch superseded by current default
+eDB,master,dependabot/pip/ruff-gte-0.15.11,1,26,diverged,close-pr-then-delete,dependabot branch superseded by current default
+eDB,master,dependabot/pip/uvicorn-gte-0.44.0,1,26,diverged,close-pr-then-delete,dependabot branch superseded by current default
+eIPC,master,achievement/update-gitignore,0,28,behind,delete-stale,every commit already on default (behind 28)
+eIPC,master,chore/production-ready-cicd,0,4,behind,delete-stale,every commit already on default (behind 4)
+eIPC,master,ci/add-codeowners,1,35,diverged,inspect,CODEOWNERS bump (1 ahead) — verify if applied to default already
+eIPC,master,cleanup/url-fixes,0,30,behind,delete-stale,every commit already on default (behind 30)
+eIPC,master,dependabot/github_actions/actions/download-artifact-8,1,37,diverged,close-pr-then-delete,dependabot branch superseded by current default
+eIPC,master,dependabot/github_actions/golangci/golangci-lint-action-9,1,37,diverged,close-pr-then-delete,dependabot branch superseded by current default
+eIPC,master,dependabot/github_actions/ossf/scorecard-action-2.4.3,1,37,diverged,close-pr-then-delete,dependabot branch superseded by current default
+eIPC,master,fix/security-and-lint-fixes,3,33,diverged,inspect,"feature/fix branch (3 ahead, 33 behind) — review commits"
+eNI,master,achievement/update-gitignore,1,30,diverged,inspect,GitHub achievement branch (1 ahead) — likely no real value
+eNI,master,chore/production-ready-cicd,0,2,behind,delete-stale,every commit already on default (behind 2)
+eNI,master,ci/add-codeowners,1,36,diverged,inspect,CODEOWNERS bump (1 ahead) — verify if applied to default already
+eNI,master,ci/disable-dependabot,1,36,diverged,inspect,"unknown branch shape (1 ahead, 36 behind)"
+eNI,master,docs/add-pr-template,1,36,diverged,inspect,"feature/fix branch (1 ahead, 36 behind) — review commits"
+eNI,master,feat/implement-stubs-cicd,0,5,behind,delete-stale,every commit already on default (behind 5)
+eNI,master,feature/blockchain-module,1,36,diverged,inspect,"feature/fix branch (1 ahead, 36 behind) — review commits"
+eNI,master,security-hardening,1,30,diverged,inspect,security work (1 ahead) — must not be silently dropped
+eOffice,master,chore/production-ready-cicd,0,4,behind,delete-stale,every commit already on default (behind 4)
+eOffice,master,fix/workspace-structure,0,49,behind,delete-stale,every commit already on default (behind 49)
+eVera,master,chore/production-ready-cicd,0,5,behind,delete-stale,every commit already on default (behind 5)
+ebuild,master,chore/production-ready-cicd,0,5,behind,delete-stale,every commit already on default (behind 5)
+ebuild,master,ci/add-codeowners,1,39,diverged,inspect,CODEOWNERS bump (1 ahead) — verify if applied to default already
+ebuild,master,dependabot/github_actions/actions/setup-python-6,1,41,diverged,close-pr-then-delete,dependabot branch superseded by current default
+ebuild,master,dependabot/github_actions/ossf/scorecard-action-2.4.3,1,56,diverged,close-pr-then-delete,dependabot branch superseded by current default
+ebuild,master,dependabot/pip/click-gte-8.1.8,2,41,diverged,close-pr-then-delete,dependabot branch superseded by current default
+ebuild,master,dependabot/pip/flake8-gte-7.3.0,2,41,diverged,close-pr-then-delete,dependabot branch superseded by current default
+ebuild,master,fix/remove-bom-from-eos-ai-test,2,36,diverged,inspect,"feature/fix branch (2 ahead, 36 behind) — review commits"
+embeddedos-org,main,chore/production-ready-cicd,0,5,behind,delete-stale,every commit already on default (behind 5)
+embeddedos-org.github.io,master,chore/production-ready-cicd,0,8,behind,delete-stale,every commit already on default (behind 8)
+embeddedos-org.github.io,master,dependabot/github_actions/actions/github-script-9,1,8,diverged,close-pr-then-delete,dependabot branch superseded by current default
+embeddedos-org.github.io,master,dependabot/github_actions/actions/setup-python-6,1,8,diverged,close-pr-then-delete,dependabot branch superseded by current default
+embeddedos-org.github.io,master,dependabot/github_actions/actions/upload-pages-artifact-5,1,8,diverged,close-pr-then-delete,dependabot branch superseded by current default
+embeddedos-org.github.io,master,dependabot/github_actions/github/codeql-action-4,1,8,diverged,close-pr-then-delete,dependabot branch superseded by current default
+embeddedos-org.github.io,master,dependabot/npm_and_yarn/html-validate-11.1.0,1,2,diverged,close-pr-then-delete,dependabot branch superseded by current default
+embeddedos-org.github.io,master,dependabot/npm_and_yarn/linkinator-7.6.1,1,8,diverged,close-pr-then-delete,dependabot branch superseded by current default
+embeddedos-org.github.io,master,dependabot/npm_and_yarn/wait-on-9.0.10,1,2,diverged,close-pr-then-delete,dependabot branch superseded by current default
+eos,master,achievement/pair-contributors,1,35,diverged,inspect,GitHub achievement branch (1 ahead) — likely no real value
+eos,master,achievement/pair-extraordinaire,2,36,diverged,inspect,GitHub achievement branch (2 ahead) — likely no real value
+eos,master,achievement/yolo-cleanup,1,36,diverged,inspect,GitHub achievement branch (1 ahead) — likely no real value
+eos,master,achievement/yolo-gitignore-fix,1,36,diverged,inspect,GitHub achievement branch (1 ahead) — likely no real value
+eos,master,chore/production-ready-cicd,0,4,behind,delete-stale,every commit already on default (behind 4)
+eos,master,ci/add-codeowners,1,41,diverged,inspect,CODEOWNERS bump (1 ahead) — verify if applied to default already
+eos,master,cleanup/url-fixes,0,37,behind,delete-stale,every commit already on default (behind 37)
+eosllm,main,chore/production-ready-cicd,0,2,behind,delete-stale,every commit already on default (behind 2)
