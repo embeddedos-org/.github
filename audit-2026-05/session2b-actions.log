@@ -1,0 +1,55 @@
+  [DELETE ] eos                            achievement/pair-contributors
+    deleted: GitHub badge auto-branch; no real code value
+  [DELETE ] eos                            achievement/pair-extraordinaire
+    deleted: GitHub badge auto-branch; no real code value
+  [DELETE ] eos                            achievement/yolo-cleanup
+    deleted: GitHub badge auto-branch; no real code value
+  [DELETE ] eos                            achievement/yolo-gitignore-fix
+    deleted: GitHub badge auto-branch; no real code value
+  [DELETE ] eBoot                          achievement/update-gitignore
+    deleted: GitHub badge auto-branch
+  [DELETE ] eNI                            achievement/update-gitignore
+    deleted: GitHub badge auto-branch
+  [DELETE ] eAI                            ci/add-codeowners
+    deleted: CODEOWNERS already on master; bump superseded
+  [DELETE ] eBoot                          ci/add-codeowners
+    deleted: CODEOWNERS already on master; bump superseded
+  [DELETE ] eIPC                           ci/add-codeowners
+    deleted: CODEOWNERS already on master; bump superseded
+  [DELETE ] ebuild                         ci/add-codeowners
+    deleted: CODEOWNERS already on master; bump superseded
+  [DELETE ] eos                            ci/add-codeowners
+    deleted: CODEOWNERS already on master; bump superseded
+  [DELETE ] eApps                          ci/add-auto-assign
+    deleted: auto-assign.yml already on master; superseded
+  [DELETE ] eApps                          ci/disable-dependabot
+    deleted: disabling Dependabot is an anti-pattern for security hygiene
+  [DELETE ] eNI                            ci/disable-dependabot
+    deleted: disabling Dependabot is an anti-pattern for security hygiene
+  [DELETE ] eNI                            docs/add-pr-template
+    deleted: org-wide PR template now lives in embeddedos-org/.github
+  [MERGE  ] EoSim                          security-hardening
+    MERGE CONFLICT; leaving branch alive + surfacing
+{"message":"Merge conflict","documentation_url":"https://docs.github.com/rest/branches/branches#merge-a-branch","status":"409"}gh: Merge conflict (HTTP 409)
+  [MERGE  ] EoStudio                       security-hardening
+    MERGE CONFLICT; leaving branch alive + surfacing
+{"message":"Merge conflict","documentation_url":"https://docs.github.com/rest/branches/branches#merge-a-branch","status":"409"}gh: Merge conflict (HTTP 409)
+  [MERGE  ] eBoot                          security-hardening
+    merge OK; deleting branch
+DELETE-AFTER-MERGE-OK
+  [MERGE  ] eNI                            security-hardening
+    MERGE CONFLICT; leaving branch alive + surfacing
+{"message":"Merge conflict","documentation_url":"https://docs.github.com/rest/branches/branches#merge-a-branch","status":"409"}gh: Merge conflict (HTTP 409)
+  [MERGE  ] eIPC                           fix/security-and-lint-fixes
+    MERGE CONFLICT; leaving branch alive + surfacing
+{"message":"Merge conflict","documentation_url":"https://docs.github.com/rest/branches/branches#merge-a-branch","status":"409"}gh: Merge conflict (HTTP 409)
+  [MERGE  ] ebuild                         fix/remove-bom-from-eos-ai-test
+    merge OK; deleting branch
+DELETE-AFTER-MERGE-OK
+  [MERGE  ] eApps                          fix/remove-duplicate-eostudio-hardware-module
+    MERGE CONFLICT; leaving branch alive + surfacing
+{"message":"Merge conflict","documentation_url":"https://docs.github.com/rest/branches/branches#merge-a-branch","status":"409"}gh: Merge conflict (HTTP 409)
+  [SURFACE] eApps                          refactor/extract-standalone-products
+    surfacing for review: substantial refactor; review before merging
+  [SURFACE] eNI                            feature/blockchain-module
+    surfacing for review: out-of-scope feature for the Neural Interface repo; needs explicit user call

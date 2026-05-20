@@ -1,0 +1,230 @@
+[DELETE ] eApps :: refactor/extract-standalone-products
+          reason: Superseded — already done via eFab + canonical 13-repo split
+          deleted
+[DELETE ] eNI :: feature/blockchain-module
+          reason: Out-of-scope for the BCI/Neural-Interface repo — 22 files of Solidity + crypto C code; revive in a dedicated repo if pursued
+          deleted
+[DELETE ] eApps :: fix/remove-duplicate-eostudio-hardware-module
+          reason: Intent already satisfied on master (the duplicate hardware.py is gone there); branch is the source of the merge conflict, not a fix
+          deleted
+
+[MERGE  ] eIPC :: fix/security-and-lint-fixes
+From github.com:embeddedos-org/eIPC
+ * [new branch]      fix/security-and-lint-fixes -> _audit_fix_security-and-lint-fixes
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+Auto-merging transport/tcp/tls_config.go
+CONFLICT (content): Merge conflict in transport/tcp/tls_config.go
+Auto-merging transport/tcp/tcp.go
+CONFLICT (content): Merge conflict in transport/tcp/tcp.go
+Auto-merging transport/shm/shm_test.go
+CONFLICT (content): Merge conflict in transport/shm/shm_test.go
+Auto-merging transport/shm/shm.go
+CONFLICT (content): Merge conflict in transport/shm/shm.go
+Auto-merging tests/stress_test.go
+CONFLICT (content): Merge conflict in tests/stress_test.go
+Auto-merging tests/integration_test.go
+CONFLICT (content): Merge conflict in tests/integration_test.go
+Auto-merging services/registry/registry_test.go
+CONFLICT (content): Merge conflict in services/registry/registry_test.go
+Auto-merging services/policy/policy.go
+CONFLICT (content): Merge conflict in services/policy/policy.go
+Auto-merging services/broker/broker_test.go
+CONFLICT (content): Merge conflict in services/broker/broker_test.go
+Auto-merging services/broker/broker.go
+CONFLICT (content): Merge conflict in services/broker/broker.go
+Auto-merging services/audit/audit_test.go
+CONFLICT (content): Merge conflict in services/audit/audit_test.go
+Auto-merging services/audit/audit.go
+CONFLICT (content): Merge conflict in services/audit/audit.go
+Auto-merging security/keyring/keyring_test.go
+CONFLICT (content): Merge conflict in security/keyring/keyring_test.go
+Auto-merging security/keyring/keyring.go
+CONFLICT (content): Merge conflict in security/keyring/keyring.go
+Auto-merging security/encryption/aes_test.go
+CONFLICT (content): Merge conflict in security/encryption/aes_test.go
+Auto-merging security/auth/identity.go
+CONFLICT (content): Merge conflict in security/auth/identity.go
+Auto-merging sdk/c/src/eipc_client.c
+CONFLICT (content): Merge conflict in sdk/c/src/eipc_client.c
+Auto-merging protocol/fuzz_test.go
+CONFLICT (content): Merge conflict in protocol/fuzz_test.go
+Auto-merging protocol/frame.go
+CONFLICT (content): Merge conflict in protocol/frame.go
+Auto-merging protocol/benchmark_test.go
+CONFLICT (content): Merge conflict in protocol/benchmark_test.go
+Auto-merging core/types.go
+CONFLICT (content): Merge conflict in core/types.go
+Auto-merging core/router_test.go
+CONFLICT (content): Merge conflict in core/router_test.go
+Auto-merging core/lifecycle.go
+CONFLICT (content): Merge conflict in core/lifecycle.go
+Auto-merging core/endpoint.go
+CONFLICT (content): Merge conflict in core/endpoint.go
+Auto-merging core/benchmark_test.go
+CONFLICT (content): Merge conflict in core/benchmark_test.go
+Auto-merging config/config_test.go
+CONFLICT (content): Merge conflict in config/config_test.go
+Auto-merging config/config.go
+CONFLICT (content): Merge conflict in config/config.go
+Auto-merging cmd/eipc-server/main.go
+CONFLICT (content): Merge conflict in cmd/eipc-server/main.go
+Auto-merging cmd/eipc-client/main.go
+CONFLICT (content): Merge conflict in cmd/eipc-client/main.go
+Auto-merging cmd/eipc-cli/main.go
+CONFLICT (content): Merge conflict in cmd/eipc-cli/main.go
+Automatic merge failed; fix conflicts and then commit the result.
+          conflicts detected; applying smart-resolve rules
+            theirs (security branch): cmd/eipc-cli/main.go
+            theirs (security branch): cmd/eipc-client/main.go
+            theirs (security branch): cmd/eipc-server/main.go
+            theirs (security branch): config/config.go
+            theirs (security branch): config/config_test.go
+            theirs (security branch): core/benchmark_test.go
+            theirs (security branch): core/endpoint.go
+            theirs (security branch): core/lifecycle.go
+            theirs (security branch): core/router_test.go
+            theirs (security branch): core/types.go
+            theirs (security branch): protocol/benchmark_test.go
+            theirs (security branch): protocol/frame.go
+            theirs (security branch): protocol/fuzz_test.go
+            theirs (security branch): sdk/c/src/eipc_client.c
+            theirs (security branch): security/auth/identity.go
+            theirs (security branch): security/encryption/aes_test.go
+            theirs (security branch): security/keyring/keyring.go
+            theirs (security branch): security/keyring/keyring_test.go
+            theirs (security branch): services/audit/audit.go
+            theirs (security branch): services/audit/audit_test.go
+            theirs (security branch): services/broker/broker.go
+            theirs (security branch): services/broker/broker_test.go
+            theirs (security branch): services/policy/policy.go
+            theirs (security branch): services/registry/registry_test.go
+            theirs (security branch): tests/integration_test.go
+            theirs (security branch): tests/stress_test.go
+            theirs (security branch): transport/shm/shm.go
+            theirs (security branch): transport/shm/shm_test.go
+            theirs (security branch): transport/tcp/tcp.go
+            theirs (security branch): transport/tcp/tls_config.go
+[master 9ad33d7] merge(audit-2026-05): fix/security-and-lint-fixes -> master; .github/workflows kept from master, other paths from fix/security-and-lint-fixes
+remote: Bypassed rule violations for refs/heads/master:        
+remote: 
+remote: - This branch must not contain merge commits.        
+remote:   Found 1 violation:        
+remote: 
+remote:   9ad33d7a827f34941d5395bae2470c29d15d15c2        
+remote: 
+remote: - Changes must be made through a pull request.        
+remote: 
+To github.com:embeddedos-org/eIPC.git
+   cd6ab31..9ad33d7  master -> master
+          push OK
+          branch deleted
+
+[MERGE  ] EoSim :: security-hardening
+From github.com:embeddedos-org/EoSim
+ * [new branch]      security-hardening -> _audit_security-hardening
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+Auto-merging eosim/engine/qemu/qmp_client.py
+Auto-merging README.md
+CONFLICT (content): Merge conflict in README.md
+Auto-merging Dockerfile
+CONFLICT (content): Merge conflict in Dockerfile
+CONFLICT (add/add): Merge conflict in .github/workflows/weekly.yml
+Auto-merging .github/workflows/weekly.yml
+CONFLICT (add/add): Merge conflict in .github/workflows/scorecard.yml
+Auto-merging .github/workflows/scorecard.yml
+CONFLICT (add/add): Merge conflict in .github/workflows/release.yml
+Auto-merging .github/workflows/release.yml
+CONFLICT (add/add): Merge conflict in .github/workflows/nightly.yml
+Auto-merging .github/workflows/nightly.yml
+CONFLICT (add/add): Merge conflict in .github/workflows/codeql.yml
+Auto-merging .github/workflows/codeql.yml
+Automatic merge failed; fix conflicts and then commit the result.
+          conflicts detected; applying smart-resolve rules
+            ours (master): .github/workflows/codeql.yml
+            ours (master): .github/workflows/nightly.yml
+            ours (master): .github/workflows/release.yml
+            ours (master): .github/workflows/scorecard.yml
+            ours (master): .github/workflows/weekly.yml
+            theirs (security branch): Dockerfile
+            theirs (security branch): README.md
+[master eda3b6f] merge(audit-2026-05): security-hardening -> master; .github/workflows kept from master, other paths from security-hardening
+remote: Bypassed rule violations for refs/heads/master:        
+remote: 
+remote: - Changes must be made through a pull request.        
+remote: 
+To github.com:embeddedos-org/EoSim.git
+   b297ec2..eda3b6f  master -> master
+          push OK
+          branch deleted
+
+[MERGE  ] EoStudio :: security-hardening
+From github.com:embeddedos-org/EoStudio
+ * [new branch]      security-hardening -> _audit_security-hardening
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+Auto-merging eostudio/core/ai/llm_client.py
+CONFLICT (content): Merge conflict in eostudio/core/ai/llm_client.py
+Auto-merging README.md
+CONFLICT (add/add): Merge conflict in .github/workflows/weekly.yml
+Auto-merging .github/workflows/weekly.yml
+CONFLICT (add/add): Merge conflict in .github/workflows/scorecard.yml
+Auto-merging .github/workflows/scorecard.yml
+CONFLICT (add/add): Merge conflict in .github/workflows/release.yml
+Auto-merging .github/workflows/release.yml
+CONFLICT (add/add): Merge conflict in .github/workflows/nightly.yml
+Auto-merging .github/workflows/nightly.yml
+CONFLICT (add/add): Merge conflict in .github/workflows/codeql.yml
+Auto-merging .github/workflows/codeql.yml
+Automatic merge failed; fix conflicts and then commit the result.
+          conflicts detected; applying smart-resolve rules
+            ours (master): .github/workflows/codeql.yml
+            ours (master): .github/workflows/nightly.yml
+            ours (master): .github/workflows/release.yml
+            ours (master): .github/workflows/scorecard.yml
+            ours (master): .github/workflows/weekly.yml
+            theirs (security branch): eostudio/core/ai/llm_client.py
+[master 26a06ea] merge(audit-2026-05): security-hardening -> master; .github/workflows kept from master, other paths from security-hardening
+remote: Bypassed rule violations for refs/heads/master:        
+remote: 
+remote: - Changes must be made through a pull request.        
+remote: 
+To github.com:embeddedos-org/EoStudio.git
+   e82a389..26a06ea  master -> master
+          push OK
+          branch deleted
+
+[MERGE  ] eNI :: security-hardening
+From github.com:embeddedos-org/eNI
+ * [new branch]      security-hardening -> _audit_security-hardening
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+Auto-merging README.md
+CONFLICT (content): Merge conflict in README.md
+Auto-merging .github/workflows/weekly.yml
+Auto-merging .github/workflows/nightly.yml
+Automatic merge failed; fix conflicts and then commit the result.
+          conflicts detected; applying smart-resolve rules
+            theirs (security branch): README.md
+[master cdcf7d4] merge(audit-2026-05): security-hardening -> master; .github/workflows kept from master, other paths from security-hardening
+remote: Bypassed rule violations for refs/heads/master:        
+remote: 
+remote: - This branch must not contain merge commits.        
+remote:   Found 1 violation:        
+remote: 
+remote:   cdcf7d47709af9b411f575094685f867f987a4c7        
+remote: 
+remote: - Commits must have verified signatures.        
+remote:   Found 1 violation:        
+remote: 
+remote:   773ac69463e261db3d6551bcbec0e843859b0864        
+remote: 
+remote: - Changes must be made through a pull request.        
+remote: 
+To github.com:embeddedos-org/eNI.git
+   068fc9c..cdcf7d4  master -> master
+          push OK
+          branch deleted
+
+=== done ===
