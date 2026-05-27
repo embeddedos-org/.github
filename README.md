@@ -23,7 +23,7 @@ We continuously benchmark GitHub Config against the entire EmbeddedOS ecosystem 
 
 ---
 
-## 🎬 Product Marketing Video
+## 🎬 Product Marketing Video (App Store Proof of Production)
 
 Experience GitHub Config in action! Watch our high-fidelity product demonstration and marketing video:
 
