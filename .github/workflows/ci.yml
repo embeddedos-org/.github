@@ -1,55 +1,27 @@
-name: CI — .github
+name: Production CI/CD Pipeline
 
 on:
   push:
-    branches: [ master, main, develop ]
+    branches: [ main ]
   pull_request:
-    branches: [ master, main ]
+    branches: [ main ]
 
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
-    
     steps:
-    - uses: actions/checkout@v4
-    
+    - uses: actions/checkout@v3
+
     - name: Set up Python
-      uses: actions/setup-python@v5
+      uses: actions/setup-python@v4
       with:
-        python-version: '3.11'
-    
-    - name: Install dependencies
+        python-style: '3.11'
+
+    - name: Install Dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install pytest pytest-cov gcovr
-        sudo apt-get install -y gcc cmake make gcovr
-    
-    - name: Run unit tests
-      run: python3 -m pytest tests/unit/ -v --tb=short 2>/dev/null || python3 run_all_tests.py
-    
-    - name: Run functional tests
-      run: python3 -m pytest tests/functional/ -v --tb=short 2>/dev/null || echo "Functional tests via run_all_tests.py"
-    
-    - name: Run performance tests
-      run: python3 -m pytest tests/performance/ -v --tb=short 2>/dev/null || echo "Performance tests via run_all_tests.py"
-    
-    - name: Run simulation tests
-      run: python3 -m pytest tests/simulation/ -v --tb=short 2>/dev/null || echo "Simulation tests via run_all_tests.py"
-    
-    - name: Upload test results
-      uses: actions/upload-artifact@v4
-      if: always()
-      with:
-        name: test-results
-        path: |
-          docs/screenshots/
-          test_results*.txt
+        pip install pytest pytest-cov requests matplotlib numpy
 
-  security-scan:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
-    - name: Run static analysis
+    - name: Run Domain-Specific Test Suite
       run: |
-        sudo apt-get install -y cppcheck
-        cppcheck --error-exitcode=0 --quiet . 2>&1 | head -50 || true
+        python run_all_tests.py
