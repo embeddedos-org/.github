@@ -1,0 +1,57 @@
+{
+  "$schema": "./repositories.schema.json",
+  "schema_version": 1,
+  "organization": "embeddedos-org",
+  "trusted_automation_actors": [
+    "dependabot[bot]"
+  ],
+  "required_features": {
+    "issues": true,
+    "wiki": true,
+    "discussions": true,
+    "projects": true
+  },
+  "discussion_categories": [
+    {"name": "Announcements", "answerable": false},
+    {"name": "General", "answerable": false},
+    {"name": "Ideas", "answerable": false},
+    {"name": "Q&A", "answerable": true},
+    {"name": "Show and Tell", "answerable": false}
+  ],
+  "wiki_pages": [
+    "Home.md",
+    "Getting-Started.md",
+    "Development.md",
+    "Security.md",
+    "FAQ.md",
+    "_Sidebar.md"
+  ],
+  "repositories": [
+    {"name": ".github", "visibility": "public", "lifecycle": "active", "category": "governance", "default_branch": "master", "documentation_source": "README.md", "project_v2": null},
+    {"name": "EoSim", "visibility": "public", "lifecycle": "active", "category": "tooling", "default_branch": "master", "documentation_source": "README.md", "project_v2": null},
+    {"name": "EoStudio", "visibility": "public", "lifecycle": "active", "category": "tooling", "default_branch": "master", "documentation_source": "README.md", "project_v2": null},
+    {"name": "eAI", "visibility": "public", "lifecycle": "active", "category": "platform", "default_branch": "master", "documentation_source": "README.md", "project_v2": null},
+    {"name": "eApps", "visibility": "public", "lifecycle": "active", "category": "applications", "default_branch": "master", "documentation_source": "README.md", "project_v2": null},
+    {"name": "eBoot", "visibility": "public", "lifecycle": "active", "category": "platform", "default_branch": "master", "documentation_source": "README.md", "project_v2": null},
+    {"name": "eBrowser", "visibility": "public", "lifecycle": "active", "category": "applications", "default_branch": "master", "documentation_source": "README.md", "project_v2": null},
+    {"name": "eCAD-Hardware-Products", "visibility": "public", "lifecycle": "active", "category": "hardware", "default_branch": "master", "documentation_source": "README.md", "project_v2": null},
+    {"name": "eDB", "visibility": "public", "lifecycle": "active", "category": "applications", "default_branch": "master", "documentation_source": "README.md", "project_v2": null},
+    {"name": "eFirmware", "visibility": "public", "lifecycle": "active", "category": "platform", "default_branch": "master", "documentation_source": "README.md", "project_v2": null},
+    {"name": "eFlow", "visibility": "public", "lifecycle": "planned", "category": "platform", "default_branch": "master", "documentation_source": "README.md", "project_v2": null},
+    {"name": "eIPC", "visibility": "public", "lifecycle": "active", "category": "platform", "default_branch": "master", "documentation_source": "README.md", "project_v2": null},
+    {"name": "eNI", "visibility": "public", "lifecycle": "active", "category": "platform", "default_branch": "master", "documentation_source": "README.md", "project_v2": null},
+    {"name": "eNet", "visibility": "public", "lifecycle": "active", "category": "platform", "default_branch": "master", "documentation_source": "README.md", "project_v2": null},
+    {"name": "eOffice", "visibility": "public", "lifecycle": "active", "category": "applications", "default_branch": "master", "documentation_source": "README.md", "project_v2": null},
+    {"name": "eSec", "visibility": "public", "lifecycle": "partial", "category": "platform", "default_branch": "master", "documentation_source": "README.md", "project_v2": null},
+    {"name": "eVera", "visibility": "private", "lifecycle": "active", "category": "applications", "default_branch": "master", "documentation_source": "README.md", "project_v2": null},
+    {"name": "ebuild", "visibility": "public", "lifecycle": "active", "category": "tooling", "default_branch": "master", "documentation_source": "README.md", "project_v2": null},
+    {"name": "embeddedos-org", "visibility": "public", "lifecycle": "active", "category": "organization", "default_branch": "master", "documentation_source": "README.md", "project_v2": null},
+    {"name": "embeddedos-org.github.io", "visibility": "public", "lifecycle": "active", "category": "documentation", "default_branch": "master", "documentation_source": "README.md", "project_v2": null},
+    {"name": "embeddedos-stack", "visibility": "private", "lifecycle": "active", "category": "integration", "default_branch": "master", "documentation_source": "README.md", "project_v2": null},
+    {"name": "eos", "visibility": "public", "lifecycle": "active", "category": "platform", "default_branch": "master", "documentation_source": "README.md", "project_v2": null},
+    {"name": "eos-aero", "visibility": "public", "lifecycle": "active", "category": "hardware", "default_branch": "master", "documentation_source": "README.md", "project_v2": null},
+    {"name": "eos-health", "visibility": "public", "lifecycle": "active", "category": "hardware", "default_branch": "main", "documentation_source": "README.md", "project_v2": null},
+    {"name": "eosllm", "visibility": "public", "lifecycle": "active", "category": "platform", "default_branch": "master", "documentation_source": "README.md", "project_v2": null},
+    {"name": "www.embeddedos.org", "visibility": "public", "lifecycle": "active", "category": "documentation", "default_branch": "master", "documentation_source": "README.md", "project_v2": null}
+  ]
+}

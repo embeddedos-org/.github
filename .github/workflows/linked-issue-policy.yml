@@ -1,0 +1,46 @@
+name: Reusable linked issue policy
+
+on:
+  workflow_call:
+    inputs:
+      policy_ref:
+        description: Full commit SHA in embeddedos-org/.github containing the reviewed policy
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  issues: read
+  pull-requests: read
+
+jobs:
+  linked-issue:
+    name: Policy / Linked Issue
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Require an immutable policy reference
+        env:
+          POLICY_REF: ${{ inputs.policy_ref }}
+        shell: bash
+        run: |
+          if [[ ! "$POLICY_REF" =~ ^[0-9a-f]{40}$ ]]; then
+            echo "policy_ref must be a full lowercase 40-character commit SHA" >&2
+            exit 1
+          fi
+
+      - name: Check out reviewed policy only
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          repository: embeddedos-org/.github
+          ref: ${{ inputs.policy_ref }}
+          path: policy
+          persist-credentials: false
+
+      - name: Validate same-repository closing issue
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: >-
+          python3 policy/scripts/validate_linked_issue.py
+          --event "$GITHUB_EVENT_PATH"
+          --registry policy/governance/repositories.json

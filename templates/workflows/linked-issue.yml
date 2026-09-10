@@ -1,0 +1,16 @@
+name: Linked issue policy
+
+on:
+  pull_request_target:
+    types: [opened, edited, reopened, synchronize]
+
+permissions:
+  contents: read
+  issues: read
+  pull-requests: read
+
+jobs:
+  policy:
+    uses: embeddedos-org/.github/.github/workflows/linked-issue-policy.yml@POLICY_COMMIT_SHA
+    with:
+      policy_ref: POLICY_COMMIT_SHA

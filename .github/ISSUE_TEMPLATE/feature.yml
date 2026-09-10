@@ -1,0 +1,40 @@
+name: Feature request
+description: Propose an actionable improvement to this repository
+title: "feat: "
+labels: ["enhancement", "triage"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or use case
+      description: Explain the user need or limitation without prescribing an implementation.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed outcome
+      description: Describe the behavior or capability that would resolve the problem.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Note current workarounds or other approaches considered.
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope and compatibility
+      description: Identify affected platforms, APIs, formats, or compatibility constraints.
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Submission checks
+      options:
+        - label: I searched existing issues and Discussions for this request.
+          required: true
+        - label: This request does not disclose a security vulnerability.
+          required: true
