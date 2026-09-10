@@ -114,7 +114,7 @@ class GovernanceConfigurationTest(unittest.TestCase):
         self.assertEqual(templates, expected)
         sidebar = (ROOT / "wiki-templates" / "_Sidebar.md").read_text(encoding="utf-8")
         for page in ("Home", "Getting-Started", "Development", "Security", "FAQ"):
-            self.assertIn(f"]({page})", sidebar)
+            self.assertIn(f"]({page}.md)", sidebar)
 
 
 if __name__ == "__main__":

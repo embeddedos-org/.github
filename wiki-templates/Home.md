@@ -1,6 +1,7 @@
 # {{repository}}
 
-This Wiki is the maintained community guide for [`embeddedos-org/{{repository}}`](https://github.com/embeddedos-org/{{repository}}).
+This Wiki is the maintained community guide for
+[`embeddedos-org/{{repository}}`](https://github.com/embeddedos-org/{{repository}}).
 
 ## Repository navigation
 
@@ -11,4 +12,5 @@ This Wiki is the maintained community guide for [`embeddedos-org/{{repository}}`
 - [Projects](https://github.com/embeddedos-org/{{repository}}/projects)
 - [Security policy](https://github.com/embeddedos-org/{{repository}}/security/policy)
 
-Start with [Getting Started](Getting-Started), then read [Development](Development) before contributing.
+Start with [Getting Started](Getting-Started.md), then read
+[Development](Development.md) before contributing.

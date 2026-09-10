@@ -1,8 +1,10 @@
-- [Home](Home)
-- [Getting Started](Getting-Started)
-- [Development](Development)
-- [Security](Security)
-- [FAQ](FAQ)
+<!-- markdownlint-disable MD041 -->
+
+- [Home](Home.md)
+- [Getting Started](Getting-Started.md)
+- [Development](Development.md)
+- [Security](Security.md)
+- [FAQ](FAQ.md)
 
 ---
 
