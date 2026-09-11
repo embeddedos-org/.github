@@ -16,7 +16,7 @@
     {"name": "General", "answerable": false},
     {"name": "Ideas", "answerable": false},
     {"name": "Q&A", "answerable": true},
-    {"name": "Show and Tell", "answerable": false}
+    {"name": "Show and tell", "answerable": false}
   ],
   "wiki_pages": [
     "Home.md",
