@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/embeddedos-org/.github/governance/repositories.schema.json",
+  "title": "EmbeddedOS repository governance registry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "organization", "trusted_automation_actors", "required_features", "discussion_categories", "wiki_pages", "repositories"],
+  "properties": {
+    "$schema": {"type": "string"},
+    "schema_version": {"const": 1},
+    "organization": {"const": "embeddedos-org"},
+    "trusted_automation_actors": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "required_features": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["issues", "wiki", "discussions", "projects"],
+      "properties": {
+        "issues": {"const": true},
+        "wiki": {"const": true},
+        "discussions": {"const": true},
+        "projects": {"const": true}
+      }
+    },
+    "discussion_categories": {
+      "type": "array",
+      "minItems": 5,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "answerable"],
+        "properties": {
+          "name": {"type": "string", "minLength": 1},
+          "answerable": {"type": "boolean"}
+        }
+      }
+    },
+    "wiki_pages": {
+      "type": "array",
+      "minItems": 6,
+      "uniqueItems": true,
+      "items": {"type": "string", "pattern": "^[A-Za-z0-9_-]+\\.md$"}
+    },
+    "repositories": {
+      "type": "array",
+      "minItems": 26,
+      "maxItems": 26,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "visibility", "lifecycle", "category", "default_branch", "documentation_source", "project_v2"],
+        "properties": {
+          "name": {"type": "string", "minLength": 1},
+          "visibility": {"enum": ["public", "private", "internal"]},
+          "lifecycle": {"enum": ["active", "planned", "partial", "archived"]},
+          "category": {"enum": ["applications", "documentation", "governance", "hardware", "integration", "organization", "platform", "tooling"]},
+          "default_branch": {"type": "string", "minLength": 1},
+          "documentation_source": {"type": "string", "minLength": 1},
+          "project_v2": {
+            "oneOf": [
+              {"type": "null"},
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["id", "url"],
+                "properties": {
+                  "id": {"type": "string", "minLength": 1},
+                  "url": {"type": "string", "pattern": "^https://github\\.com/orgs/embeddedos-org/projects/[0-9]+$"}
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+}

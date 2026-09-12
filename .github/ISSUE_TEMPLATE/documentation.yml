@@ -1,0 +1,39 @@
+name: Documentation problem
+description: Report missing, incorrect, or unclear documentation
+title: "docs: "
+labels: ["documentation", "triage"]
+body:
+  - type: input
+    id: location
+    attributes:
+      label: Documentation location
+      description: Link to the page or provide its repository path.
+      placeholder: https://github.com/embeddedos-org/... or docs/guide.md
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What is wrong or missing?
+      description: Quote the relevant text when useful and explain why it is inaccurate or unclear.
+    validations:
+      required: true
+  - type: textarea
+    id: correction
+    attributes:
+      label: Suggested correction
+      description: Describe the accurate outcome or information, if known.
+  - type: input
+    id: version
+    attributes:
+      label: Version or commit
+      placeholder: v1.2.3 or 0123456789abcdef
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Submission checks
+      options:
+        - label: I checked that a newer version of the documentation does not already resolve this.
+          required: true
+        - label: This report contains no security-sensitive details.
+          required: true

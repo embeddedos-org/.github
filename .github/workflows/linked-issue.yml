@@ -1,0 +1,16 @@
+name: Linked issue policy
+
+on:
+  pull_request_target:
+    types: [opened, edited, reopened, synchronize]
+
+permissions:
+  contents: read
+  issues: read
+  pull-requests: read
+
+jobs:
+  policy:
+    uses: ./.github/workflows/linked-issue-policy.yml
+    with:
+      policy_ref: ${{ github.sha }}
