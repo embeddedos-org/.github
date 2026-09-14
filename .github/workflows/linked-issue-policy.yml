@@ -16,6 +16,14 @@ permissions:
 jobs:
   linked-issue:
     name: Policy / Linked Issue
+    # Callers trigger on pull_request_target for [opened, edited, reopened,
+    # synchronize], and `edited` fires on closed and merged pull requests
+    # too. A merged PR cannot be changed to satisfy this policy, and grading
+    # it says nothing about the tree -- on 2026-09-14 a round of body edits
+    # on already-merged PRs produced 50 failing runs across three repos,
+    # every one on a merged or closed branch. Only an open PR is a decision
+    # still to be made. `github.event` here is the caller's event.
+    if: github.event.pull_request.state == 'open'
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:

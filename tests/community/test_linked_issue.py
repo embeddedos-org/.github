@@ -96,3 +96,32 @@ class LinkedIssuePolicyTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class ReusableWorkflowGatesOnPullRequestState(unittest.TestCase):
+    """The reusable workflow must not grade closed or merged pull requests.
+
+    pull_request_target fires on `edited` for closed and merged PRs too. A
+    merged PR cannot be changed to satisfy the policy, so the job carries a
+    state guard. This pins the parsed structure, not the text: a guard that
+    parses but lands on the wrong key, or on a step instead of the job, is
+    the failure mode a substring check would miss.
+    """
+
+    WORKFLOW = ROOT / ".github" / "workflows" / "linked-issue-policy.yml"
+
+    def _job(self):
+        import yaml  # installed by community-governance-tests.yml
+
+        with self.WORKFLOW.open(encoding="utf-8") as fh:
+            doc = yaml.safe_load(fh)
+        return doc["jobs"]["linked-issue"]
+
+    def test_job_runs_only_for_open_pull_requests(self):
+        self.assertEqual(self._job().get("if"), "github.event.pull_request.state == 'open'")
+
+    def test_guard_is_on_the_job_not_on_a_step(self):
+        # A step-level `if` would still spin the job up and report a status
+        # for a merged PR; the guard has to skip the job itself.
+        for step in self._job()["steps"]:
+            self.assertNotIn("if", step, step.get("name"))
