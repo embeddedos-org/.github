@@ -16,6 +16,14 @@ permissions:
 jobs:
   linked-issue:
     name: Policy / Linked Issue
+    # Callers run this on pull_request_target for [opened, edited, reopened,
+    # synchronize]. `edited` fires on closed and merged pull requests too, so a
+    # body edit on a PR merged before the policy existed graded it and failed
+    # it -- and a merged PR cannot be changed to satisfy anything. Only an
+    # open PR is a decision still to be made. The github context inside a
+    # reusable workflow is the caller's, so this reads the caller's event and
+    # guards every consumer at once, instead of one caller at a time.
+    if: github.event.pull_request.state == 'open'
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
