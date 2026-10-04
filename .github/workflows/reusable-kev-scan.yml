@@ -1,0 +1,152 @@
+# Reusable CISA KEV (Known Exploited Vulnerabilities) scan.
+#
+# Call from a repository's workflow to fail the build when a dependency in
+# the caller's SBOM matches a CISA Known Exploited Vulnerability entry:
+#
+#   jobs:
+#     kev:
+#       uses: embeddedos-org/.github/.github/workflows/reusable-kev-scan.yml@master
+#       with:
+#         sbom-path: sbom.cyclonedx.json
+#
+# Inputs:
+#   sbom-path     - path to a CycloneDX JSON or SPDX JSON SBOM (recommended).
+#   packages-file - fallback: text file with one package name per line
+#                   ("name" or "name==version"); used when no SBOM is given.
+#
+# The scan is stdlib-only Python: it downloads the KEV catalog JSON,
+# extracts component names from the SBOM (or the packages file), and fails
+# with the matching CVE IDs. Matching is intentionally conservative
+# (normalized substring in either direction); false positives are possible
+# and should be triaged, not silenced.
+#
+# This workflow is additive and opt-in: nothing calls it until a repository
+# chooses to.
+
+name: Reusable CISA KEV scan
+
+on:
+  workflow_call:
+    inputs:
+      sbom-path:
+        description: "Path to a CycloneDX or SPDX JSON SBOM to scan"
+        required: false
+        type: string
+        default: ""
+      packages-file:
+        description: "Fallback: text file with one package name per line"
+        required: false
+        type: string
+        default: ""
+
+jobs:
+  kev-scan:
+    name: CISA KEV scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Scan against CISA KEV catalog
+        env:
+          KEV_SBOM_PATH: ${{ inputs.sbom-path }}
+          KEV_PACKAGES_FILE: ${{ inputs.packages-file }}
+        run: |
+          python3 - <<'PYEOF'
+          import json
+          import os
+          import re
+          import sys
+          import urllib.request
+
+          KEV_URL = (
+              "https://www.cisa.gov/sites/default/files/"
+              "json/known_exploited_vulnerabilities.json"
+          )
+
+
+          def norm(s):
+              return re.sub(r"[^a-z0-9]+", "", s.lower())
+
+
+          def component_names(sbom_path):
+              with open(sbom_path, encoding="utf-8") as f:
+                  data = json.load(f)
+              names = set()
+              # CycloneDX: {"components": [{"name": ...}]}
+              for c in data.get("components", []) or []:
+                  n = c.get("name")
+                  if n:
+                      names.add(str(n))
+              # SPDX: {"packages": [{"name": ...}]}, skip the DESCRIBES doc package
+              for p in data.get("packages", []) or []:
+                  n = p.get("name")
+                  if n and n != "NOASSERTION":
+                      names.add(str(n))
+              return names
+
+
+          def package_names(path):
+              names = set()
+              with open(path, encoding="utf-8") as f:
+                  for line in f:
+                      line = line.strip()
+                      if not line or line.startswith("#"):
+                          continue
+                      # tolerate "name==version" / "name @ url" forms
+                      name = re.split(r"[=<>!~@\s\[]", line, 1)[0].strip()
+                      if name:
+                          names.add(name)
+              return names
+
+
+          def main():
+              sbom_path = os.environ.get("KEV_SBOM_PATH", "").strip()
+              packages_file = os.environ.get("KEV_PACKAGES_FILE", "").strip()
+              if sbom_path:
+                  if not os.path.isfile(sbom_path):
+                      print(f"::error::SBOM not found: {sbom_path}")
+                      sys.exit(2)
+                  deps = component_names(sbom_path)
+                  print(f"scanning {len(deps)} SBOM components")
+              elif packages_file:
+                  if not os.path.isfile(packages_file):
+                      print(f"::error::packages file not found: {packages_file}")
+                      sys.exit(2)
+                  deps = package_names(packages_file)
+                  print(f"scanning {len(deps)} packages from {packages_file}")
+              else:
+                  print("::error::give sbom-path or packages-file")
+                  sys.exit(2)
+
+              req = urllib.request.Request(
+                  KEV_URL, headers={"User-Agent": "embeddedos-kev-scan"}
+              )
+              with urllib.request.urlopen(req, timeout=60) as resp:
+                  catalog = json.load(resp)
+              kev = catalog.get("vulnerabilities", [])
+              print(f"KEV catalog: {len(kev)} entries, "
+                    f"date {catalog.get('dateReleased', '?')}")
+
+              normed = {d: norm(d) for d in deps}
+              hits = []
+              for entry in kev:
+                  product = str(entry.get("product", ""))
+                  pn = norm(product)
+                  if not pn or len(pn) < 3:
+                      continue
+                  for dep, dn in normed.items():
+                      if pn in dn or dn in pn:
+                          hits.append((entry.get("cveID"), product, dep))
+                          break
+
+              if hits:
+                  print("::error::CISA KEV matches found:")
+                  for cve, product, dep in sorted(set(hits)):
+                      print(f"::error::  {cve}: KEV product {product!r} "
+                            f"matches dependency {dep!r}")
+                  sys.exit(1)
+              print("no CISA KEV matches")
+
+
+          main()
+          PYEOF
