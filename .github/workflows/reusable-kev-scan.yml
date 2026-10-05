@@ -14,8 +14,9 @@
 #   packages-file - fallback: text file with one package name per line
 #                   ("name" or "name==version"); used when no SBOM is given.
 #
-# The scan is stdlib-only Python: it downloads the KEV catalog JSON,
-# extracts component names from the SBOM (or the packages file), and fails
+# The scan is stdlib-only Python: it downloads the KEV catalog (CSV —
+# the JSON feed was retired by CISA; verified 2026-10-05), extracts
+# component names from the SBOM (or the packages file), and fails
 # with the matching CVE IDs. Matching is intentionally conservative
 # (normalized substring in either direction); false positives are possible
 # and should be triaged, not silenced.
@@ -52,15 +53,18 @@ jobs:
           KEV_PACKAGES_FILE: ${{ inputs.packages-file }}
         run: |
           python3 - <<'PYEOF'
+          import csv
+          import io
           import json
           import os
           import re
           import sys
           import urllib.request
 
+          # CISA retired the JSON feed (404s); the CSV feed is live.
           KEV_URL = (
               "https://www.cisa.gov/sites/default/files/"
-              "json/known_exploited_vulnerabilities.json"
+              "csv/known_exploited_vulnerabilities.csv"
           )
 
 
@@ -122,21 +126,24 @@ jobs:
                   KEV_URL, headers={"User-Agent": "embeddedos-kev-scan"}
               )
               with urllib.request.urlopen(req, timeout=60) as resp:
-                  catalog = json.load(resp)
-              kev = catalog.get("vulnerabilities", [])
-              print(f"KEV catalog: {len(kev)} entries, "
-                    f"date {catalog.get('dateReleased', '?')}")
+                  text = resp.read().decode("utf-8", errors="replace")
+              kev = []
+              for row in csv.DictReader(io.StringIO(text)):
+                  cve = (row.get("cveID") or "").strip()
+                  product = (row.get("product") or "").strip()
+                  if cve and product:
+                      kev.append((cve, product))
+              print(f"KEV catalog: {len(kev)} entries")
 
               normed = {d: norm(d) for d in deps}
               hits = []
-              for entry in kev:
-                  product = str(entry.get("product", ""))
+              for cve, product in kev:
                   pn = norm(product)
                   if not pn or len(pn) < 3:
                       continue
                   for dep, dn in normed.items():
                       if pn in dn or dn in pn:
-                          hits.append((entry.get("cveID"), product, dep))
+                          hits.append((cve, product, dep))
                           break
 
               if hits:
