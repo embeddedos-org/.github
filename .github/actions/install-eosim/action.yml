@@ -1,0 +1,64 @@
+name: Install EoSim (pinned tag)
+description: >-
+  Installs EoSim from a pinned, validated git tag. EoSim publishes no wheel
+  for any release, so the default (and recommended) mode clones the tag and
+  pip-installs from source. Fails closed on malformed or nonexistent tags —
+  this is the durable fix for the EOSIM_VERSION "0.1.0" root-cause family
+  (that tag never existed; every Install EoSim step 404'd).
+
+inputs:
+  version:
+    description: "EoSim version to install, e.g. '3.0.2' or 'v3.0.2'."
+    required: false
+    default: "3.0.2"
+  install-mode:
+    description: "'from-source' (default, recommended) or 'wheel'."
+    required: false
+    default: "from-source"
+  dest:
+    description: "Directory to clone EoSim into."
+    required: false
+    default: "${{ runner.temp }}/EoSim"
+
+runs:
+  using: composite
+  steps:
+    - name: Resolve and validate EoSim tag
+      id: resolve
+      shell: bash
+      run: |
+        TAG=$(python3 "${{ github.action_path }}/resolve_eosim_tag.py" \
+          "${{ inputs.version }}" --check-remote)
+        echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+        echo "install-eosim: resolved tag $TAG"
+
+    - name: Install EoSim from source
+      if: inputs.install-mode == 'from-source'
+      shell: bash
+      run: |
+        rm -rf "${{ inputs.dest }}"
+        git clone --depth 1 --branch "${{ steps.resolve.outputs.tag }}" \
+          https://github.com/embeddedos-org/EoSim.git "${{ inputs.dest }}"
+        pip install "${{ inputs.dest }}"
+
+    - name: Install EoSim wheel
+      if: inputs.install-mode == 'wheel'
+      shell: bash
+      run: |
+        TAG="${{ steps.resolve.outputs.tag }}"
+        VER="${TAG#v}"
+        URL="https://github.com/embeddedos-org/EoSim/releases/download/${TAG}/eosim-${VER}-py3-none-any.whl"
+        CODE=$(curl -s -o /dev/null -w "%{http_code}" -I "$URL")
+        if [ "$CODE" != "200" ]; then
+          echo "::error::install-eosim: no wheel at $URL (HTTP $CODE). EoSim publishes no wheels; use install-mode 'from-source'."
+          exit 1
+        fi
+        pip install "eosim @ $URL"
+
+    - name: Verify installation
+      shell: bash
+      run: |
+        TAG="${{ steps.resolve.outputs.tag }}"
+        eosim --version | grep -q "${TAG#v}" \
+          || { echo "::error::install-eosim: installed version does not match $TAG"; exit 1; }
+        eosim list >/dev/null
