@@ -41,7 +41,7 @@ Each product repository declares its own supported-version matrix in its own
 ## Response SLA
 
 | Phase        | Timeline  |
-| --- | --- |
+| ------------- | ---------- |
 | Acknowledge  | 24 hours  |
 | Triage       | 72 hours  |
 | Fix released | 90 days   |
