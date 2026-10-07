@@ -11,7 +11,7 @@ This repo deliberately contains **no product source code**.
 ## What lives here
 
 | Path | What it is | Why it lives here |
-|---|---|---|
+| --- | --- | --- |
 | `profile/README.md` | Org company-profile page rendered at <https://github.com/embeddedos-org>. | Only file GitHub treats as the org front door. Keep it short. |
 | `CODE_OF_CONDUCT.md` | Contributor Covenant 2.1. | GitHub surfaces it as the default CoC for every product repo. |
 | `CONTRIBUTING.md` | Org-wide contribution guide (short, points to per-repo guides). | GitHub surfaces it as the default CONTRIBUTING for every product repo. |

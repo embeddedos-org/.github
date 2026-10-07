@@ -33,7 +33,7 @@ Each product repository declares its own supported-version matrix in its own
 `SECURITY.md`. As a general default for the EmbeddedOS organisation:
 
 | Version | Supported |
-|---------|-----------|
+| --- | --- |
 | Latest released `vX.Y.Z` | ✅ Yes |
 | Previous minor `vX.(Y-1).Z` | 🟡 Best effort, security patches only |
 | Older | ❌ No |
@@ -41,7 +41,7 @@ Each product repository declares its own supported-version matrix in its own
 ## Response SLA
 
 | Phase        | Timeline  |
-|--------------|-----------|
+| --- | --- |
 | Acknowledge  | 24 hours  |
 | Triage       | 72 hours  |
 | Fix released | 90 days   |

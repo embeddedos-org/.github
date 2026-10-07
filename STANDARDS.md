@@ -31,7 +31,7 @@ Pre-release candidates use `-rc.N`. No other suffix is recognised by the
 Every repo has exactly two long-lived branches:
 
 | Branch | What it is | Who writes to it |
-|---|---|---|
+| --- | --- | --- |
 | `master` | Line of development. Every PR merges here. | Maintainers via PRs. |
 | `release` | Rolling pointer to the latest released `vX.Y.Z` tag. | The `sync-release-branch.yml` workflow only. **Never** push to it directly. |
 
@@ -40,6 +40,7 @@ workflow force-updates `release` to point at the same commit. Tags are
 immutable; the `release` branch is a movable pointer.
 
 Consumers integrating with a product can pin to:
+
 - A specific `vX.Y.Z` tag (most stable; recommended for production).
 - The `release` branch (auto-tracks latest released).
 - The `master` branch (development; may break).
@@ -98,6 +99,7 @@ Repos that do not ship their own override use these by default:
 ## Standards-compliance assertions
 
 A repo asserts compliance with a framework by:
+
 1. Adding it to the **Standards Compliance** section of its `README.md`.
 2. Linking to evidence (a doc page, a CI workflow that enforces it, or an audit report).
 3. Running the verifying workflow on every push (where automation exists).

@@ -1,3 +1,5 @@
+<!-- markdownlint-disable MD033 MD041 MD001 -->
+
 <div align="center">
 
 <img src="https://raw.githubusercontent.com/embeddedos-org/eos/master/docs/book/cover.png" width="180" alt="EmbeddedOS">
@@ -39,37 +41,42 @@ compose into one coherent stack. Each product is independently useful and
 independently released; bundled deployments are managed via [eFab](https://github.com/embeddedos-org/eFab).
 
 ### 🔵 Core Platform
+
 | | Repo | One-liner |
-|---|---|---|
+| --- | --- | --- |
 | ⚙️ | [**eos**](https://github.com/embeddedos-org/eos) | RTOS kernel, HAL (33 interfaces), multicore SMP/AMP, services, GDB stub, loadable drivers. |
 | 🔐 | [**eBoot**](https://github.com/embeddedos-org/eBoot) | A/B embedded bootloader with RFC 8032 Ed25519, staged boot, recovery. STM32F4 production reference. |
 | 📡 | [**eIPC**](https://github.com/embeddedos-org/eIPC) | Secure IPC framework — Go + C SDKs, HMAC-SHA256, replay protection, TCP / Unix / SHM transports. |
 | 🛠 | [**ebuild**](https://github.com/embeddedos-org/ebuild) | Unified build system — SDK generator (14 targets), hardware analyzer, 18 CLI commands. |
 
 ### 🟣 AI &amp; Neural
+
 | | Repo | One-liner |
-|---|---|---|
+| --- | --- | --- |
 | 🧠 | [**eAI**](https://github.com/embeddedos-org/eAI) | On-device AI / LLM inference — 12 curated models, agent loop, LoRA fine-tuning, federated learning. |
 | 🧬 | [**eNI**](https://github.com/embeddedos-org/eNI) | Neural-interface adapter — Neuralink (1024 ch / 30 kHz), EEG, DSP, intent decoder, safety interlocks. |
 
 ### 🟢 Apps &amp; Services
+
 | | Repo | One-liner |
-|---|---|---|
+| --- | --- | --- |
 | 📱 | [**eApps**](https://github.com/embeddedos-org/eApps) | Unified app store — 60+ apps across desktop, mobile, web, browser-extensions, CLI, enterprise. |
 | 🗄 | [**eDB**](https://github.com/embeddedos-org/eDB) | Multi-model database — SQL + Document + Key-Value, REST API, AES-256, eBot AI queries. |
 | 🌐 | [**eBrowser**](https://github.com/embeddedos-org/eBrowser) | Embedded web browser engine — HTML5 / CSS, modular rendering / network / input layers. |
 | 📄 | [**eOffice**](https://github.com/embeddedos-org/eOffice) | Office suite — eDocs, eSheets, eSlides, eMail, eDrive, ePlanner, eNotes, eConnect, eForms, eSway. |
 
 ### 🟠 Tools &amp; Hardware
+
 | | Repo | One-liner |
-|---|---|---|
+| --- | --- | --- |
 | 🔬 | [**EoSim**](https://github.com/embeddedos-org/EoSim) | Multi-architecture simulator — 52+ platforms, 12 architectures, native + QEMU + Renode + HIL. |
 | 🎨 | [**EoStudio**](https://github.com/embeddedos-org/EoStudio) | Visual design IDE — 12 editors (3D, CAD, UI, game, hardware), 30+ code generators, LLM-assisted. |
 | 🔩 | [**eCAD-Hardware-Products**](https://github.com/embeddedos-org/eCAD-Hardware-Products) | Hardware designs — KiCad PCBs, EE docs, board datasheets for reference products. |
 
 ### 🧰 Meta-repos *(not part of canon)*
+
 | | Repo | Role |
-|---|---|---|
+| --- | --- | --- |
 | 🌐 | [**embeddedos-org.github.io**](https://github.com/embeddedos-org/embeddedos-org.github.io) | Source for [embeddedos-org.github.io](https://embeddedos-org.github.io) — docs, books, stacks, downloads. |
 | 🏭 | [**eFab**](https://github.com/embeddedos-org/eFab) | Stack fabricator — manifest-only meta-repo. v0.1.0 ships `eai-edge` (ENI + EIPC + eAI). |
 | ⚙️ | [**.github**](https://github.com/embeddedos-org/.github) | Org-wide configuration: this profile, the default `CONTRIBUTING.md`, `SECURITY.md`, `CODE_OF_CONDUCT.md`, issue/PR templates, canon validator. |
