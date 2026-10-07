@@ -61,3 +61,10 @@ is tracked per-repo (e.g. eBoot#147).
 
 `tests/community/test_install_eosim.py` covers the resolver (7 tests, no
 network). Run: `python3 -m pytest tests/community/test_install_eosim.py`.
+
+## Known limitations
+
+- **Windows/macOS runners:** the resolve step runs `python3`, which
+  `actions/setup-python` does not guarantee on Windows runners. Consumer
+  workflows keep their direct clone on Windows/macOS jobs until the action
+  handles that (tracked via eApps#49).
