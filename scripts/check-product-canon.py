@@ -34,6 +34,10 @@ SCAN_EXTS = {'.html', '.md'}
 EXCLUDE_DIR_NAMES = {
     '.git', 'node_modules', 'test-results', '_site', 'dist', 'build', '.next',
     '.venv', 'venv', '__pycache__',
+    # Dated historical audit record (2026-05-19): it names deprecated repos
+    # precisely in order to ban them, so it can never satisfy the canon.
+    # Excluded rather than rewritten — see issue #2.
+    'audit-2026-05',
 }
 EXCLUDE_PATH_FRAGMENTS = (
     'tests/screenshots',
