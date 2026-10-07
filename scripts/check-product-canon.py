@@ -43,6 +43,13 @@ EXCLUDE_PATH_FRAGMENTS = (
     'docs/embeddedos-ecosystem-guide.md',
     'docs\\embeddedos-ecosystem-guide.md',
     'CHANGELOG.md',
+    # The 2026-05 audit is a dated record of the rename itself. Its checklists
+    # name the old repos in order to forbid them ("No reference to deprecated
+    # repo names (`eHardware-Designs-Products`, etc.)"), and its per-repo file
+    # for eVera exists because eVera was audited before it was dropped. Editing
+    # those names out would falsify what the audit said in 2026-05.
+    'audit-2026-05/',
+    'audit-2026-05\\',
 )
 
 # (regex, friendly reason). Use re.IGNORECASE-compatible patterns where helpful.
