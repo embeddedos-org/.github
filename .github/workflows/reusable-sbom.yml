@@ -1,0 +1,61 @@
+# Reusable SBOM generation (EU CRA readiness).
+#
+# Call from a repository's workflow to emit CycloneDX and SPDX SBOMs for a
+# build output or source tree and upload them as artifacts:
+#
+#   jobs:
+#     sbom:
+#       uses: embeddedos-org/.github/.github/workflows/reusable-sbom.yml@master
+#       with:
+#         path: ./dist
+#         artifact-name: myapp-sbom
+#
+# This workflow is additive and opt-in: nothing calls it until a repository
+# chooses to. Action pins follow the org's current major-tag practice; they
+# will move to SHA pins with the org-wide Node-24 sweep.
+
+name: Reusable SBOM generation
+
+on:
+  workflow_call:
+    inputs:
+      path:
+        description: "Path to scan (build output directory or source root)"
+        required: false
+        type: string
+        default: "."
+      artifact-name:
+        description: "Name for the uploaded SBOM artifact"
+        required: false
+        type: string
+        default: "sbom"
+
+jobs:
+  sbom:
+    name: Generate SBOM
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate CycloneDX SBOM
+        uses: anchore/sbom-action@v0
+        with:
+          path: ${{ inputs.path }}
+          format: cyclonedx-json
+          output-file: sbom.cyclonedx.json
+
+      - name: Generate SPDX SBOM
+        uses: anchore/sbom-action@v0
+        with:
+          path: ${{ inputs.path }}
+          format: spdx-json
+          output-file: sbom.spdx.json
+
+      - name: Upload SBOMs
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ inputs.artifact-name }}
+          path: |
+            sbom.cyclonedx.json
+            sbom.spdx.json
+          retention-days: 90

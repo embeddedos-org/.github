@@ -20,7 +20,7 @@ repositories** plus a handful of meta-repos. Most code contributions belong in
 a downstream product repo, not here.
 
 | You want to … | Open the PR / issue here |
-|---------------|--------------------------|
+| --- | --- |
 | Fix a bug in the OS kernel | [`embeddedos-org/eos`](https://github.com/embeddedos-org/eos) |
 | Improve / add a doc page or book | [`embeddedos-org/embeddedos-org.github.io`](https://github.com/embeddedos-org/embeddedos-org.github.io) |
 | Add an app to the marketplace | [`embeddedos-org/eApps`](https://github.com/embeddedos-org/eApps) |
