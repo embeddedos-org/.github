@@ -15,7 +15,7 @@ Simulation Sanity Test, ebuild#128's desktop sanity jobs).
 
 ```yaml
 - name: Install EoSim
-  uses: embeddedos-org/.github/.github/actions/install-eosim@v1  # or @master
+  uses: embeddedos-org/.github/.github/actions/install-eosim@master  # no v1 tag yet; v1.0.0 predates this action
   with:
     version: "3.0.2"        # default; must be a real vX.Y.Z tag (fail closed)
     install-mode: from-source  # default; 'wheel' only if a wheel 200s
