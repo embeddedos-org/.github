@@ -1,5 +1,14 @@
 name: Reusable linked issue policy
 
+# Scope (recorded 2026-10-10): this policy grades OPEN PULL REQUESTS only.
+# It requires a linked same-repository closing issue on every open PR. It
+# does NOT grade direct pushes to a default branch — a push to master/main
+# never triggers this check, so a red "Linked issue policy" on a PR says
+# nothing about the health of the branch it targets. (Verified 2026-10-10:
+# embeddedos-org/eos#192 failed this policy on the PR while eos master
+# stayed fully green; the failure was the PR's missing linked issue, as
+# designed — the author had committed to a feature branch, not master.)
+
 on:
   workflow_call:
     inputs:
