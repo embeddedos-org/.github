@@ -1,0 +1,76 @@
+# Reusable server.json validation (MCP Registry / Server Card readiness).
+#
+# Call from a repository's workflow to validate its MCP server.json before
+# publishing, so the registry metadata cannot drift from the package
+# version — the stale-version failure mode this check exists to kill:
+#
+#   jobs:
+#     server-json:
+#       uses: embeddedos-org/.github/.github/workflows/reusable-server-json.yml@master
+#       with:
+#         server_json_path: server.json
+#         expected_version: "1.2.0"
+#
+# Checks: the file parses as JSON; the required fields (name, description,
+# version, repository) are present; and `version` matches the caller's
+# expected_version exactly. Every failure names the offending field.
+# This workflow is additive and opt-in: nothing calls it until a repository
+# chooses to. Action pins follow the org's current major-tag practice.
+
+name: Reusable server.json validation
+
+on:
+  workflow_call:
+    inputs:
+      server_json_path:
+        description: "Path to the server.json file, relative to the repo root"
+        required: false
+        type: string
+        default: "server.json"
+      expected_version:
+        description: "Version the server.json `version` field must match"
+        required: true
+        type: string
+
+jobs:
+  validate:
+    name: Validate server.json
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate server.json
+        env:
+          SERVER_JSON_PATH: ${{ inputs.server_json_path }}
+          EXPECTED_VERSION: ${{ inputs.expected_version }}
+        run: |
+          python3 - "$SERVER_JSON_PATH" "$EXPECTED_VERSION" <<'PYEOF'
+          import json
+          import sys
+
+          path, expected = sys.argv[1], sys.argv[2]
+          try:
+              with open(path, encoding="utf-8") as f:
+                  data = json.load(f)
+          except FileNotFoundError:
+              print(f"::error::server.json not found at {path}")
+              sys.exit(1)
+          except json.JSONDecodeError as e:
+              print(f"::error::server.json at {path} does not parse as JSON: {e}")
+              sys.exit(1)
+
+          missing = [k for k in ("name", "description", "version", "repository") if not data.get(k)]
+          if missing:
+              for k in missing:
+                  print(f"::error::server.json is missing required field: {k}")
+              sys.exit(1)
+
+          if str(data["version"]) != expected:
+              print(
+                  f"::error::server.json version mismatch: field 'version' is "
+                  f"{data['version']!r}, expected {expected!r}"
+              )
+              sys.exit(1)
+
+          print(f"server.json OK: {data['name']} {data['version']} matches expected version")
+          PYEOF
