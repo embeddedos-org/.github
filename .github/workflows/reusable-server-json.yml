@@ -9,11 +9,16 @@
 #       uses: embeddedos-org/.github/.github/workflows/reusable-server-json.yml@master
 #       with:
 #         server_json_path: server.json
+#         # expected_version is OPTIONAL: pass it (e.g. "1.2.0") to pin
+#         # server.json's version to your package version, or omit it to
+#         # validate structure only. (It was previously required with no
+#         # usable default, so a copied example failed for any caller who
+#         # only wanted the structural check.)
 #         expected_version: "1.2.0"
 #
 # Checks: the file parses as JSON; the required fields (name, description,
-# version, repository) are present; and `version` matches the caller's
-# expected_version exactly. Every failure names the offending field.
+# version, repository) are present; and, when expected_version is given,
+# `version` matches it exactly. Every failure names the offending field.
 # This workflow is additive and opt-in: nothing calls it until a repository
 # chooses to. Action pins follow the org's current major-tag practice.
 
@@ -28,9 +33,11 @@ on:
         type: string
         default: "server.json"
       expected_version:
-        description: "Version the server.json `version` field must match"
-        required: true
+        description: "Version the server.json `version` field must match; empty skips the equality check"
+        required: false
         type: string
+        default: ""
+
 
 jobs:
   validate:
@@ -65,12 +72,14 @@ jobs:
                   print(f"::error::server.json is missing required field: {k}")
               sys.exit(1)
 
-          if str(data["version"]) != expected:
-              print(
-                  f"::error::server.json version mismatch: field 'version' is "
-                  f"{data['version']!r}, expected {expected!r}"
-              )
-              sys.exit(1)
-
-          print(f"server.json OK: {data['name']} {data['version']} matches expected version")
+          if expected:
+              if str(data["version"]) != expected:
+                  print(
+                      f"::error::server.json version mismatch: field 'version' is "
+                      f"{data['version']!r}, expected {expected!r}"
+                  )
+                  sys.exit(1)
+              print(f"server.json OK: {data['name']} {data['version']} matches expected version")
+          else:
+              print(f"server.json OK: {data['name']} {data['version']} (structure only; no expected_version given)")
           PYEOF
