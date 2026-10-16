@@ -21,6 +21,7 @@ This repo deliberately contains **no product source code**.
 | `.github/workflows/check-canon.yml` | Enforces the canonical 13-product / 14-book roster on this repo. | Mirrors the same workflow in every other org repo. |
 | `.github/workflows/health-check.yml` | Weekly link-check of the live site + the org page. | Catches link rot. |
 | `.github/workflows/lint-readme.yml` | markdownlint + lychee on every push touching `*.md`. | Keeps the profile and prose tidy. |
+| `.github/workflows/reusable-server-json.yml` | Reusable `server.json` validation for MCP repos. | Single fix point; adoption standard in `docs/reusable-server-json-standard.md`. |
 | `scripts/check-product-canon.py` | Canon validator. | Lock the 13 / 14 numbers; same script as the other repos for consistency. |
 | `LICENSE` | MIT. | Org default. |
 
