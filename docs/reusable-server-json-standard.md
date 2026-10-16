@@ -47,7 +47,7 @@ repo whose `server.json` version is deliberately independent.
 ## Worked examples (the 2026-10-14 adopters)
 
 | Repo | Caller | `expected_version` |
-|---|---|---|
+| --- | --- | --- |
 | eosllm | `.github/workflows/server-json.yml` | `0.1.0` |
 | EoSim | `.github/workflows/server-json.yml` | `3.0.2` |
 | eFlow | `.github/workflows/server-json.yml` | `0.1.0` |
