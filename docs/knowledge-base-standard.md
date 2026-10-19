@@ -116,14 +116,23 @@ measured from the live trees on the census date.
 | eFirmware | 18,562 | |
 | eos-aero | 14,548 | |
 | embeddedos-stack | 43,394 | private; pair carries no credential material |
-| eVera | 44,268 | private |
+| (second private repo) | 44,268 | private; counted but not named — see the note below |
+
+Note on the unnamed row: the 21st pair lives in the org's second
+private repo (the on-device agent). Its name is a banned token in
+this repository — the canon validator
+(`scripts/check-product-canon.py`) forbids the dropped product's
+name in `.github` documents — so the census counts it without
+naming it. The daily loop's own census records name it; this
+standard respects the gate as written rather than exempting
+itself from it.
 
 ### The five gaps, with reasons
 
 | Repo | Why there is no pair |
 | --- | --- |
 | eos-health | Deliberate: the repo's structure is undecided (issues #2/#3 — restore / repoint / merge the split firmware trees). A pair indexing a tree that may be restructured is rework on landing; the pair follows the decision. |
-| www.embeddedos.org | Deliberate: the site's docs need their own selection pass (its content model is pages/routes, not a docs tree). A future rotation item, not a straggler. |
+| `www.embeddedos.org` | Deliberate: the site's docs need their own selection pass (its content model is pages/routes, not a docs tree). A future rotation item, not a straggler. |
 | embeddedos-org.github.io | Parked per Aswin (2026-10-02) — the legacy site is untouched until he says otherwise. |
 | .github | Meta repo — **no pair, by this standard's decision.** Its documents are org standards consumed by the other repos (this file included); agent discovery for them is the README table, and a self-indexing pair would duplicate it. Revisit if the standards set grows past what the README table can carry. |
 | embeddedos-org | Meta repo — **no pair, by the same decision.** The repo is a single profile README; there is no docs surface to index. |
