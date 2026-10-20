@@ -89,6 +89,17 @@ intended end state and belongs in this repo next to
 `reusable-server-json.yml`; until it exists, the daily loop's
 per-commit CI verification is the enforcement.
 
+**Implemented (2026-10-20):** `scripts/check-llms-drift.py` in
+this repo performs that mechanical comparison today, locally:
+given a repo directory it verifies that `llms.txt` references
+`llms-full.txt`, that every path linked from `llms.txt` exists,
+that `llms-full.txt`'s "Sources, in order:" list matches its
+section headers in order, and that every section body is
+byte-identical to its source doc — printing the first divergent
+offset when one is not. Exit 0 means in sync. The reusable
+workflow above remains the end state; the script is the check
+it will run.
+
 ## Adoption census (verified 2026-10-19, live trees)
 
 21 of 26 repos carry the pair. Sizes are `llms-full.txt` bytes as
