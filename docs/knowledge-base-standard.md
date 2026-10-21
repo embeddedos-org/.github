@@ -100,7 +100,7 @@ offset when one is not. Exit 0 means in sync. The reusable
 workflow above remains the end state; the script is the check
 it will run.
 
-## Adoption census (verified 2026-10-19, live trees)
+## Adoption census (verified 2026-10-21, live trees)
 
 21 of 26 repos carry the pair. Sizes are `llms-full.txt` bytes as
 measured from the live trees on the census date.
@@ -116,8 +116,8 @@ measured from the live trees on the census date.
 | eIPC | 79,637 | |
 | EoSim | 67,824 | also carries `server.json` + skills |
 | EoStudio | 66,670 | |
-| eSec | 33,892 | |
-| eNet | 32,147 | |
+| eSec | 36,825 | |
+| eNet | 33,056 | |
 | eFlow | 8,055 | also carries `server.json` + a skill |
 | eDB | 11,653 | 3 docs — the repo's real docs surface |
 | eApps | 32,652 | |
