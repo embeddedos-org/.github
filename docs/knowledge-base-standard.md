@@ -126,7 +126,7 @@ measured from the live trees on the census date.
 | eCAD-Hardware-Products | 327,085 | largest pair (board catalogue docs) |
 | eFirmware | 18,562 | |
 | eos-aero | 14,548 | |
-| embeddedos-stack | 49,887 | private; pair carries no credential material |
+| embeddedos-stack | 51,660 | private; pair carries no credential material |
 | (second private repo) | 44,268 | private; counted but not named — see the note below |
 
 Note on the unnamed row: the 21st pair lives in the org's second
