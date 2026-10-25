@@ -49,7 +49,7 @@ repo whose `server.json` version is deliberately independent.
 | Repo | Caller | `expected_version` |
 | --- | --- | --- |
 | eosllm | `.github/workflows/server-json.yml` | `0.1.0` |
-| EoSim | `.github/workflows/server-json.yml` | `3.0.2` |
+| EoSim | `.github/workflows/server-json.yml` | `3.1.0` |
 | eFlow | `.github/workflows/server-json.yml` | `0.1.0` |
 
 Copy one of these callers' shape rather than inventing a new one per

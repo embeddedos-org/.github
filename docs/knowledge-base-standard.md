@@ -100,14 +100,14 @@ offset when one is not. Exit 0 means in sync. The reusable
 workflow above remains the end state; the script is the check
 it will run.
 
-## Adoption census (verified 2026-10-21, live trees; eSec, eNet and embeddedos-stack rows refreshed 2026-10-23; embeddedos-stack row refreshed 2026-10-24)
+## Adoption census (verified 2026-10-21, live trees; eSec, eNet and embeddedos-stack rows refreshed 2026-10-23; embeddedos-stack row refreshed 2026-10-24; eos and eNet rows refreshed 2026-10-24, evening additional run)
 
 21 of 26 repos carry the pair. Sizes are `llms-full.txt` bytes as
 measured from the live trees on the census date.
 
 | Repo | llms-full.txt (B) | Notes |
 | --- | ---: | --- |
-| eos | 73,022 | incl. the #148 indirection design + size inventory |
+| eos | 85,414 | incl. the #148 indirection design + size inventory; + MQTT client design (eos#199) |
 | eBoot | 106,557 | |
 | ebuild | 59,557 | own 8 docs only; vendored `core/` excluded |
 | eAI | 30,338 | |
@@ -117,7 +117,7 @@ measured from the live trees on the census date.
 | EoSim | 67,824 | also carries `server.json` + skills |
 | EoStudio | 66,670 | |
 | eSec | 39,520 | |
-| eNet | 34,696 | |
+| eNet | 43,978 | incl. the home-systems plan (eNet#7) |
 | eFlow | 8,055 | also carries `server.json` + a skill |
 | eDB | 11,653 | 3 docs — the repo's real docs surface |
 | eApps | 32,652 | |
