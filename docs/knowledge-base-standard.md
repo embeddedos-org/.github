@@ -100,7 +100,7 @@ offset when one is not. Exit 0 means in sync. The reusable
 workflow above remains the end state; the script is the check
 it will run.
 
-## Adoption census (verified 2026-10-21, live trees; eSec, eNet and embeddedos-stack rows refreshed 2026-10-23; embeddedos-stack row refreshed 2026-10-24; eos and eNet rows refreshed 2026-10-24, evening additional run)
+## Adoption census (verified 2026-10-21, live trees; eSec, eNet and embeddedos-stack rows refreshed 2026-10-23; embeddedos-stack row refreshed 2026-10-24, and again 2026-10-25; eos and eNet rows refreshed 2026-10-24, evening additional run)
 
 21 of 26 repos carry the pair. Sizes are `llms-full.txt` bytes as
 measured from the live trees on the census date.
@@ -126,7 +126,7 @@ measured from the live trees on the census date.
 | eCAD-Hardware-Products | 327,085 | largest pair (board catalogue docs) |
 | eFirmware | 18,562 | |
 | eos-aero | 14,548 | |
-| embeddedos-stack | 53,242 | private; pair carries no credential material |
+| embeddedos-stack | 54,757 | private; pair carries no credential material |
 | (second private repo) | 44,268 | private; counted but not named — see the note below |
 
 Note on the unnamed row: the 21st pair lives in the org's second
