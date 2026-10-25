@@ -33,7 +33,8 @@ MCP surface is policy, analysis, and third-party bridges.
 | eSec | no | no — the **normative source**: `docs/mcp-hostile-protocol-hardening.md`, Controls 1–9 | controls | — |
 | eIPC | no | no — analysis only: `docs/mcp-attack-classes-ipc.md` maps the six MCP attack classes onto the IPC surface | analysis | — |
 | eNet | no | no — third-party bridge evaluation: `docs/mcp-bridge-evaluation.md` + `docs/mcp-bridge-trial-plan.md` (mcp2mqtt / mcp2tcp / modbus-mcp); the trial is environment-blocked (no broker in the sandbox) | bridges (external) | — |
-| all other repos | no | no MCP surface found in tree reads | — | — |
+| eApps | no | no server — a roadmap statement: `docs/ai-tool-policy.md` says agent tools should be wrapped as MCP tools in a future iteration, deferred until real tool execution exists | policy / roadmap | — |
+| all other repos | no | no MCP surface found in tree reads (filename census cross-checked by a full-text MCP search in the architect pass) | — | — |
 
 All three `server.json` files are validated by this repo's
 reusable workflow (`docs/reusable-server-json-standard.md`);
