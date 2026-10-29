@@ -100,14 +100,14 @@ offset when one is not. Exit 0 means in sync. The reusable
 workflow above remains the end state; the script is the check
 it will run.
 
-## Adoption census (verified 2026-10-21, live trees; eSec, eNet and embeddedos-stack rows refreshed 2026-10-23; embeddedos-stack row refreshed 2026-10-24, and again 2026-10-25, 2026-10-26, 2026-10-27, 2026-10-28 and 2026-10-29; eos and eNet rows refreshed 2026-10-24, evening additional run)
+## Adoption census (verified 2026-10-21, live trees; eSec, eNet and embeddedos-stack rows refreshed 2026-10-23; embeddedos-stack row refreshed 2026-10-24, and again 2026-10-25, 2026-10-26, 2026-10-27, 2026-10-28 and 2026-10-29; eos and eNet rows refreshed 2026-10-24, evening additional run; eos row refreshed 2026-10-29)
 
 21 of 26 repos carry the pair. Sizes are `llms-full.txt` bytes as
 measured from the live trees on the census date.
 
 | Repo | llms-full.txt (B) | Notes |
 | --- | ---: | --- |
-| eos | 85,414 | incl. the #148 indirection design + size inventory; + MQTT client design (eos#199) |
+| eos | 97,465 | incl. the #148 indirection design + size inventory; + MQTT client design (eos#199); + robot control + safety contract |
 | eBoot | 106,557 | |
 | ebuild | 59,557 | own 8 docs only; vendored `core/` excluded |
 | eAI | 30,338 | |
