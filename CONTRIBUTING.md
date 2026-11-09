@@ -24,7 +24,6 @@ a downstream product repo, not here.
 | Fix a bug in the OS kernel | [`embeddedos-org/eos`](https://github.com/embeddedos-org/eos) |
 | Improve / add a doc page or book | [`embeddedos-org/embeddedos-org.github.io`](https://github.com/embeddedos-org/embeddedos-org.github.io) |
 | Add an app to the marketplace | [`embeddedos-org/eApps`](https://github.com/embeddedos-org/eApps) |
-| Add or change a stack profile / manifest | [`embeddedos-org/eFab`](https://github.com/embeddedos-org/eFab) |
 | Update org-wide policy, templates, CoC, or this file | this repo (`embeddedos-org/.github`) |
 
 For a full list of product repos see the org profile at
@@ -44,7 +43,8 @@ These apply to **every** repo in the organisation:
 - **Canonical product roster** — **13 product repos / 14 reference books.**
   The `scripts/check-product-canon.py` validator runs in CI to lock that
   count; bumping it requires a coordinated change across the canon-script
-  copies in this repo, [eFab](https://github.com/embeddedos-org/eFab), and
+  copies in this repo, the stack-manifest repo (`embeddedos-stack`, formerly
+  eFab; not public), and
   [embeddedos-org.github.io](https://github.com/embeddedos-org/embeddedos-org.github.io).
 
 ## Per-repo contribution guides

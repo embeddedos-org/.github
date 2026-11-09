@@ -61,7 +61,6 @@ Where a repo ships its own `SECURITY.md`, that file takes precedence over this
 default for the specific component it covers. Notable per-repo policies:
 
 - [embeddedos-org.github.io/SECURITY.md](https://github.com/embeddedos-org/embeddedos-org.github.io/blob/master/SECURITY.md)
-- [eFab/SECURITY.md](https://github.com/embeddedos-org/eFab/blob/main/SECURITY.md)
 
 ## Hall of Fame
 

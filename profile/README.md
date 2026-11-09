@@ -18,7 +18,7 @@ the roadmap.
 
 [![Website](https://img.shields.io/badge/🌐_Website-embeddedos--org.github.io-58a6ff?style=for-the-badge)](https://embeddedos-org.github.io)
 [![Books](https://img.shields.io/badge/📚_Books-14_titles-3fb950?style=for-the-badge)](https://embeddedos-org.github.io/books.html)
-[![Stacks](https://img.shields.io/badge/🏭_Stacks-eFab-e3b341?style=for-the-badge)](https://embeddedos-org.github.io/stacks/)
+[![Stacks](https://img.shields.io/badge/🏭_Stacks-Browse-e3b341?style=for-the-badge)](https://embeddedos-org.github.io/stacks/)
 [![App Store](https://img.shields.io/badge/🏪_App_Store-Browse-f0883e?style=for-the-badge)](https://embeddedos-org.github.io/eApps/)
 
 [![Docs](https://img.shields.io/badge/📖_Docs-13_modules-79c0ff?style=flat-square)](https://embeddedos-org.github.io/docs/)
@@ -38,7 +38,7 @@ the roadmap.
 
 EmbeddedOS is **13 small, independently-versioned product repositories** that
 compose into one coherent stack. Each product is independently useful and
-independently released; bundled deployments are managed via [eFab](https://github.com/embeddedos-org/eFab).
+independently released.
 
 ### 🔵 Core Platform
 
@@ -78,7 +78,6 @@ independently released; bundled deployments are managed via [eFab](https://githu
 | | Repo | Role |
 | --- | --- | --- |
 | 🌐 | [**embeddedos-org.github.io**](https://github.com/embeddedos-org/embeddedos-org.github.io) | Source for [embeddedos-org.github.io](https://embeddedos-org.github.io) — docs, books, stacks, downloads. |
-| 🏭 | [**eFab**](https://github.com/embeddedos-org/eFab) | Stack fabricator — manifest-only meta-repo. v0.1.0 ships `eai-edge` (ENI + EIPC + eAI). |
 | ⚙️ | [**.github**](https://github.com/embeddedos-org/.github) | Org-wide configuration: this profile, the default `CONTRIBUTING.md`, `SECURITY.md`, `CODE_OF_CONDUCT.md`, issue/PR templates, canon validator. |
 
 ---
@@ -86,18 +85,17 @@ independently released; bundled deployments are managed via [eFab](https://githu
 ## ⚡ 60-second start
 
 ```bash
-# Pick your path — one of the three is enough to see something running
+# Pick your path
 
-# 1) Simulate (no hardware needed)
-pip install eosim && eosim run stm32f4 --timeout 30
+# 1) Simulator (no hardware needed): install the v3.0.2 release, list the platforms
+pip install "git+https://github.com/embeddedos-org/eosim.git@v3.0.2"
+eosim list
+#    then run a firmware image on one of them:
+#    eosim run stm32f4 --firmware <image> --timeout 30
 
 # 2) Build the kernel for one of 41 product profiles
 git clone https://github.com/embeddedos-org/eos.git && cd eos
 cmake -B build -DEOS_PRODUCT=robot && cmake --build build
-
-# 3) Build a curated stack via eFab
-git clone https://github.com/embeddedos-org/eFab.git
-cd eFab/superproject/eai-edge && cmake -B build && cmake --build build
 ```
 
 Full guide: [embeddedos-org.github.io/getting-started.html](https://embeddedos-org.github.io/getting-started.html)
@@ -109,9 +107,7 @@ Full guide: [embeddedos-org.github.io/getting-started.html](https://embeddedos-o
 Code contributions belong in the relevant downstream product repo (each ships
 its own `CONTRIBUTING.md`). Org-wide policy — the default `CONTRIBUTING.md`,
 `SECURITY.md`, `CODE_OF_CONDUCT.md`, and the issue/PR templates — lives in
-[`embeddedos-org/.github`](https://github.com/embeddedos-org/.github). For
-curated-stack profiles, manifests, and integration smoke tests: open against
-[`embeddedos-org/eFab`](https://github.com/embeddedos-org/eFab).
+[`embeddedos-org/.github`](https://github.com/embeddedos-org/.github).
 
 Standards we follow: **MIT** · **Conventional Commits** · **Contributor Covenant 2.1** · **WCAG 2.1** · **SBOM (SPDX, CycloneDX)** · ISO/IEC 27001 · IEC 61508 · ISO 26262 · DO-178C · FIPS 140-3.
 
