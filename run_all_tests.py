@@ -20,8 +20,10 @@ def main():
     
     # 1. Run standard unit tests
     print("\n[1/4] Running Unit Tests...")
-    # Add actual framework invocation if configured, otherwise python unittest
-    unit_ok = run_cmd("python3 -m unittest discover -s tests -p 'test_*.py'")
+    # The unit tests live in tests/community and use pytest fixtures, so run
+    # them with pytest, as CI does. "unittest discover -s tests" finds none:
+    # the test folders have no __init__.py.
+    unit_ok = run_cmd("python3 -m pytest tests/community/ -v --tb=short")
     
     # 2. Run functional tests
     print("\n[2/4] Running Functional Integration Tests...")
