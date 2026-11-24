@@ -7,11 +7,12 @@ import argparse
 import json
 import os
 import sys
+import time
 import urllib.error
 import urllib.request
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, Mapping, Protocol
+from typing import Any, Callable, Mapping, Protocol, Sequence
 
 
 class PolicyError(RuntimeError):
@@ -71,6 +72,21 @@ query LinkedIssues($owner: String!, $name: String!, $number: Int!, $cursor: Stri
   }
 }
 """
+
+
+# GitHub's GraphQL index lags pull request creation. A pull request whose body
+# carries a valid "Closes #N" can come back with an empty
+# closingIssuesReferences list for up to about a minute after it is opened, and
+# then resolve on an identical re-run with no change to the diff or the body.
+#
+# Retry only that one case - an empty list - a bounded number of times before
+# deciding. A pull request that genuinely closes nothing still fails, it just
+# fails about a minute later. Every other outcome is a resolved answer and is
+# acted on immediately: a transport or GraphQL error still fails closed on the
+# first attempt, and a result naming only cross-repository issues is something
+# GitHub has already indexed, so waiting cannot change it.
+EMPTY_RESULT_ATTEMPTS = 3
+EMPTY_RESULT_BACKOFF_SECONDS: tuple[float, ...] = (20.0, 40.0)
 
 
 def load_json(path: Path) -> Mapping[str, Any]:
@@ -142,19 +158,40 @@ def closing_issues(client: GraphQLClient, owner: str, name: str, number: int) ->
     return repository_id, issues
 
 
-def evaluate(event: Mapping[str, Any], registry: Mapping[str, Any], client: GraphQLClient) -> str:
+def evaluate(
+    event: Mapping[str, Any],
+    registry: Mapping[str, Any],
+    client: GraphQLClient,
+    *,
+    attempts: int = EMPTY_RESULT_ATTEMPTS,
+    backoff: Sequence[float] = EMPTY_RESULT_BACKOFF_SECONDS,
+    sleep: Callable[[float], Any] = time.sleep,
+) -> str:
     owner, name, number, actor = event_identity(event)
     allowlist = trusted_actors(registry)
     if actor in allowlist:
         return f"trusted automation actor {actor} is exempt"
 
-    repository_id, issues = closing_issues(client, owner, name, number)
-    matches = [
-        issue
-        for issue in issues
-        if isinstance(issue.get("repository"), dict)
-        and issue["repository"].get("id") == repository_id
-    ]
+    if attempts < 1:
+        raise PolicyError("The linked-issue policy requires at least one attempt")
+
+    issues: list[Mapping[str, Any]] = []
+    matches: list[Mapping[str, Any]] = []
+    for attempt in range(attempts):
+        repository_id, issues = closing_issues(client, owner, name, number)
+        matches = [
+            issue
+            for issue in issues
+            if isinstance(issue.get("repository"), dict)
+            and issue["repository"].get("id") == repository_id
+        ]
+        # Only an empty list can be index lag; anything else is a resolved
+        # answer, so stop and act on it.
+        if matches or issues:
+            break
+        if attempt + 1 < attempts and backoff:
+            sleep(backoff[min(attempt, len(backoff) - 1)])
+
     if not matches:
         detail = "only cross-repository closing issues were recognized" if issues else "no closing issues were recognized"
         raise PolicyError(
